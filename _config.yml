@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 胡金波博客
-subtitle:
-description:
-keywords:
+title: 胡金波的博客
+subtitle: 记录生活点滴，分享学习心得
+description: 享受编程和技术所带来的快乐
+keywords: 软件开发,编程技术,IT技术,Java,JavaScript,Linux,大数据,云计算
 author: 胡金波
 language: zh-CN
 timezone: Asia/Shanghai
