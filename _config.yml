@@ -75,6 +75,14 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
+# WordCounter
+## Source: https://github.com/theme-next/hexo-symbols-count-time
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: false
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 ## Source: https://github.com/hexojs/hexo-deployer-git
