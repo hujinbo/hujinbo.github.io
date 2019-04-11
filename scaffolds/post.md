@@ -7,4 +7,5 @@ categories:
 description:
 comments: true
 reward: false
+mathjax: false
 ---
