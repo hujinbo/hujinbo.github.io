@@ -8,4 +8,5 @@ description:
 comments: true
 reward: false
 mathjax: false
+quicklink: false
 ---
