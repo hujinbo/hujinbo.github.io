@@ -29,7 +29,7 @@ Markdown被广泛应用于编写开发文档、帮助文档、Wiki等，它可�
 
 显示效果如下所示：
 
-<img style="border:none;margin:0" src="http://cdn.hujinbo.me/markdown-title-demo.png" />
+<img style="border:none;margin:0" src="https://cdn.hujinbo.me/2019/04/14/markdown-title-demo.png" />
 
 
 ## 段落格式
