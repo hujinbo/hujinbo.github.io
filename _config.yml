@@ -96,6 +96,5 @@ search:
 ## Source: https://github.com/hexojs/hexo-deployer-git
 deploy:
   type: git
-  repo:
-    github: git@github.com:hujinbo/hujinbo.github.io.git,master
-    coding: git@git.dev.tencent.com:hujinbo/hujinbo.coding.me.git,master
+  repo: git@github.com:hujinbo/hujinbo.github.io.git
+  branch: master
