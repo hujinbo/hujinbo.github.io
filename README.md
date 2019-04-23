@@ -1,11 +1,11 @@
 ## 简介
 
->这是我的[个人博客](https://hujinbo.me)，使用高效的静态站点生成框架[Hexo](https://github.com/hexojs/hexo)和简洁优雅的主题[Next](https://github.com/theme-next/hexo-theme-next)搭建，它基于Node.js，拥有超快的渲染速度，支持 GitHub Flavored Markdown 的所有功能，只需一条指令即可部署到 GitHub Pages。
+>这是我的[个人博客](https://hujinbo.me)项目源码，使用高效的静态站点生成框架[Hexo](https://github.com/hexojs/hexo)和简洁优雅的主题[Next](https://github.com/theme-next/hexo-theme-next)搭建，它基于Node.js，拥有超快的渲染速度，支持 GitHub Flavored Markdown 的所有功能，只需一条指令即可部署到 GitHub Pages。
   
 
 ## 安装
 
-1. 克隆最新的代码到电脑上：
+1. 克隆最新的代码到电脑上（默认分支为 `hexo`，`master` 分支用于部署GitHub Pages）：
 
     ```bash
     git clone --recursive git@github.com:hujinbo/hujinbo.github.io.git
