@@ -6,7 +6,6 @@ tags:
 categories:
 description:
 comments: true
-reward: false
+reward: true
 mathjax: false
-quicklink: false
 ---
