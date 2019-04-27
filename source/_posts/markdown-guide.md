@@ -2,13 +2,12 @@
 title: Markdown常用语法介绍
 date: 2019-04-14 20:00:28
 updated:
-tags: markdown
+tags: Markdown
 categories: 博客教程
 description:
 comments: true
 reward: true
 mathjax: false
-quicklink: false
 ---
 > Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。
 
@@ -233,11 +232,11 @@ www.hujinbo.me
 
 ### 代码区块
 
-用4个空格或用\`\`\`包裹代码，并在后面指定编程语言：
+用4个空格或用\`\`\`包裹代码，并在后面指定编程语言和标题：
 
     注：示例代码中`` `含有空格（防止被Hexo解析成代码），实际使用时请去除空格。
     
-    `` `java
+    `` `java HelloWorld.java
     public class HelloWorld {
         public static void main(String []args) {
            System.out.println("Hello World!");
@@ -247,7 +246,7 @@ www.hujinbo.me
 
 显示效果如下所示：
 
-```java
+```java HelloWorld.java
 public class HelloWorld {
     public static void main(String []args) {
        System.out.println("Hello World!");
