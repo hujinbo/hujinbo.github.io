@@ -301,7 +301,7 @@ text_align:
   mobile: justify
 
 # Automatically scroll page to section which is under <!-- more --> mark.
-scroll_to_more: true
+scroll_to_more: false
 
 # Automatically saving scroll position on each post / page in cookies.
 save_scroll: false
@@ -312,8 +312,8 @@ excerpt_description: true
 # Automatically Excerpt (Not recommend).
 # Use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
-  length: 150
+  enable: true
+  length: 300
 
 # Read more button
 # If true, the read more button would be displayed in excerpt section.
@@ -342,9 +342,9 @@ codeblock:
   border_radius:
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Show text copy result
-    show_result: false
+    show_result: true
     # Style: only 'flat' is currently available, leave it blank if you prefer default theme
     style:
 
@@ -358,13 +358,13 @@ wechat_subscriber:
 reward_settings:
   # If true, reward would be displayed in every article by default.
   # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
-  enable: false
+  enable: true
   animation: false
-  #comment: Donate comment here
+  #comment: 您的支持将鼓励我继续创作！
 
 reward:
-  #wechatpay: /images/wechatpay.png
-  #alipay: /images/alipay.png
+  wechatpay: /images/wechatpay.png
+  alipay: /images/alipay.png
   #bitcoin: /images/bitcoin.png
 
 # Related popular posts
@@ -384,8 +384,8 @@ related_posts:
 # Dependencies: https://github.com/hexojs/hexo-deployer-git
 post_edit:
   enable: false
-  url: https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name # Link for view source.
-  #url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name # Link for fork & edit.
+  #url: https://github.com/hujinbo/hujinbo.github.io/blob/hexo/source/ # Link for view source.
+  url: https://github.com/hujinbo/hujinbo.github.io/edit/hexo/source/ # Link for fork & edit.
 
 
 # ---------------------------------------------------------------
@@ -402,7 +402,7 @@ android_chrome_color: "#222"
 safari_rainbow: false
 
 # Optimize the display of scrollbars on webkit based browsers.
-custom_scrollbar: false
+custom_scrollbar: true
 
 # Custom Logo
 # Do not support Scheme Mist currently.
@@ -416,7 +416,7 @@ custom_logo:
 highlight_theme: normal
 
 # Enable "cheers" for archive page.
-cheers: true
+cheers: false
 
 # TagCloud settings for tags page.
 tagcloud:
