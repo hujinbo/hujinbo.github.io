@@ -360,7 +360,7 @@ reward_settings:
   # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
   enable: true
   animation: false
-  #comment: 您的支持将鼓励我继续创作！
+  comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
 
 reward:
   wechatpay: /images/wechatpay.png
@@ -1205,6 +1205,12 @@ vendors:
   # disqusjs_css: //cdn.jsdelivr.net/npm/disqusjs@1/dist/disqusjs.css
   disqusjs_js:
   disqusjs_css:
+
+  # busuanzi
+  # See: https://github.com/SukkaW/busuanzi
+  # Example:
+  # busuanzi: //cdn.jsdelivr.net/npm/busuanzi@2/bsz.pure.mini.js
+  busuanzi: //cdn.jsdelivr.net/npm/busuanzi@2/bsz.pure.mini.js
 
 # Assets
 css: css
