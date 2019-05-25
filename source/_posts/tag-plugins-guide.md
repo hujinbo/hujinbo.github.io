@@ -1,0 +1,309 @@
+---
+title: Hexo标签插件常用语法介绍
+tags: Tag Plugins
+categories: 博客教程
+comments: true
+reward: true
+mathjax: false
+date: 2019-05-25 20:22:15
+updated: 2019-05-25 20:22:15
+description:
+---
+>标签插件（Tag Plugins）是Hexo提供的一种快速生成特定内容的插件，以下标签是Next主题提供的标签：
+
+## 居中引用
+
+用于文章开篇引用或者结束语之前的总结引用：
+
+
+    {% cq %}你所做的事情，也许暂时看不到成功，但不要灰心，你不是没有成长，而是在扎根。{% endcq %}
+
+
+显示效果如下所示：  
+
+{% cq %}你所做的事情，也许暂时看不到成功，但不要灰心，你不是没有成长，而是在扎根。{% endcq %}
+
+<!-- more -->
+
+## 插入页面
+
+用于引入文件的原始内容，使用站点的相对路径进行引用：
+
+    {% include_raw '_custom/include-raw.html' %}
+
+显示效果如下所示：
+
+{% include_raw '_custom/include-raw.html' %}
+
+
+## 插入按钮
+
+```md
+语法：{% btn url, text, icon [class], [title] %}
+
+url     : URL地址
+text    : 按钮文字，未指定图标时为必填
+icon    : FontAwesome图标名称（开头没有'fa-'），未指定文字时为必填
+[class] : FontAwesome样式名称，如：fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x
+[title] : 鼠标悬停时的提示
+
+示例：{% btn https://hujinbo.me, 博客主页, home fa-fw, 点击跳转我的博客主页 %}
+```
+
+显示效果如下所示：
+
+{% btn https://hujinbo.me, 博客主页, home fa-fw, 点击跳转我的博客主页 %}
+
+
+## 颜色标签
+
+```md
+语法：{% label [class]@Text %}
+
+[class] : default | primary | success | info | warning | danger
+
+示例：{% label warning@你好 %}
+```
+
+显示效果如下所示：
+
+{% label warning@你好 %}
+
+
+## 提示标签
+
+在博客中使用Bootstrap Callout，主要用于提示信息：
+
+```md
+语法：{% note [class] [no-icon] %}内容{% endnote %}
+
+[class]   : default | primary | success | info | warning | danger
+[no-icon] : 禁用图标
+
+示例：
+{% note warning %}
+注：更多详细内容，请阅读**[官方文档](https://theme-next.org/docs/tag-plugins/note)**
+{% endnote %}
+```
+
+显示效果如下所示：
+
+{% note warning %}
+注：更多详细内容，请阅读**[官方文档](https://theme-next.org/docs/tag-plugins/note)**
+{% endnote %}
+
+
+## Tab标签
+
+```md
+语法：
+{% tabs Unique name, [index] %}
+<!-- tab [Tab caption] [@icon] -->
+标签内容
+<!-- endtab -->
+{% endtabs %}
+
+Unique name   : 标签唯一标识名称。该名称将作为id前缀，故应使用英文名称，且保证在当前文章/页面唯一，不能含有逗号。
+[index]       : 激活的标签索引数值。不指定时默认选中第1个标签；当值为-1时，不会选中任何标签。
+[Tab caption] : 标签标题名称。如果没有指定标题，将使用 唯一标识名称+索引 作为当前标题名称；没有指定标题但设置了图标，则标题为空。
+[@icon]       : FontAwesome图标名称（开头没有'fa-'）
+                
+示例：
+{% tabs demo1, 2 %}
+<!-- tab 标签1 @home -->
+标签1内容
+<!-- endtab -->
+
+<!-- tab 标签2@archive -->
+标签2内容
+<!-- endtab -->
+
+<!-- tab 标签3 @th -->
+标签3内容
+<!-- endtab -->
+{% endtabs %}
+```
+
+显示效果如下所示：
+
+{% tabs demo1, 2 %}
+<!-- tab 标签1 @home -->
+标签1内容
+<!-- endtab -->
+
+<!-- tab 标签2@archive -->
+标签2内容
+<!-- endtab -->
+
+<!-- tab 标签3 @th -->
+标签3内容
+<!-- endtab -->
+{% endtabs %}
+
+
+## 插入图片
+
+### 普通图片
+ 
+```md
+语法：{% fi /url [@lazy], [alt], [title], [size] %}
+
+/url    : 图片的URL地址
+[@lazy] : 懒加载，仅在用户滚动到图像时加载图像（需启用theme-next-jquery-lazyload）
+[alt]   : 无法加载时的替代文本
+[title] : 鼠标悬停时的提示
+[size]  : 图像大小，单位(%, px, em)
+
+示例：{% fi /images/logo.svg, 网站Logo, 网站Logo, 100% %}
+```
+
+显示效果如下所示：
+
+{% fi /images/logo.svg, 网站Logo, 网站Logo, 100px %}
+
+### 高级组图
+```md
+语法：{% gp [group]-[layout] %}{% endgp %}
+
+[group]  : 要在组中添加的图片总数
+[layout] : 在分组下默认显示的图片
+
+示例：
+{% gp 4-2 %}
+  ![](/images/favicon-16x16.png)
+  ![](/images/favicon-32x32.png)
+  ![](/images/favicon-16x16.png)
+  ![](/images/favicon-32x32.png)
+{% endgp %}
+```
+
+显示效果如下所示：
+
+{% gp 4-2 %}
+  ![](/images/favicon-16x16.png)
+  ![](/images/favicon-32x32.png)
+  ![](/images/favicon-16x16.png)
+  ![](/images/favicon-32x32.png)
+{% endgp %}
+
+
+## 插入视频
+
+    {% video https://cdn.hujinbo.me/video/demo.mp4 %}
+
+显示效果如下所示：
+
+{% video https://cdn.hujinbo.me/video/demo.mp4 %}
+
+
+## 插入PDF
+
+```md
+语法：{% pdf url [height] %}
+
+[url]    : URL地址
+[height] : 显示高度
+
+示例：{% pdf https://cdn.hujinbo.me/pdf/demo.pdf 790px %}
+```
+
+显示效果如下所示：
+
+{% pdf https://cdn.hujinbo.me/pdf/demo.pdf 790px %}
+
+
+## 流程图
+
+用类似Markdown语法的方式生成流程图，详见[mermaid官方文档](https://github.com/knsv/mermaid)
+
+```md
+语法：{% mermaid type %}{% endmermaid %}
+
+type : mermaid图表类型
+```
+
+### 流程图
+
+```md
+{% mermaid graph LR %}
+ST[开始]-->A
+A[用户管理]-->B{是否注册}
+B-->|是|B1(输入用户名密码)
+B-->|否|B2(注册)
+B1-->C[登录]
+C-->D[完善个人信息]
+B2-->E[注册完成]
+E-->B
+E-->END[结束]
+{% endmermaid %}
+```
+
+显示效果如下所示：
+
+{% mermaid graph LR %}
+ST[开始]-->A
+A[用户管理]-->B{是否注册}
+B-->|是|B1(输入用户名密码)
+B-->|否|B2(注册)
+B1-->C[登录]
+C-->D[完善个人信息]
+B2-->E[注册完成]
+E-->B
+E-->END[结束]
+{% endmermaid %}
+
+### 时序图
+
+```md
+{% mermaid sequenceDiagram %}
+participant A as 客户
+participant B as 取款机
+participant C as 银行
+A->>B: 请求取款
+B->>C: 取款请求
+Note right of C: 处理请求...
+C-->>B: 请求结果
+B-->>A: 请求结果
+{% endmermaid %}
+```
+
+显示效果如下所示：
+
+{% mermaid sequenceDiagram %}
+participant A as 客户
+participant B as 取款机
+participant C as 银行
+A->>B: 请求取款
+B->>C: 取款请求
+Note right of C: 处理请求...
+C-->>B: 请求结果
+B-->>A: 请求结果
+{% endmermaid %}
+
+### 甘特图
+
+```md
+{% mermaid gantt %}
+title 项目进度规划表
+dateFormat YYYY-MM-DD
+section 前期
+需求分析:2019-04-11, 8d
+section 中期
+编码开发:2019-04-19, 15d
+section 后期
+系统测试:2019-04-26, 15d
+{% endmermaid %}
+```
+
+显示效果如下所示：
+
+{% mermaid gantt %}
+title 项目进度规划表
+dateFormat YYYY-MM-DD
+section 前期
+需求分析:2019-04-11, 8d
+section 中期
+编码开发:2019-04-19, 15d
+section 后期
+系统测试:2019-04-26, 15d
+{% endmermaid %}

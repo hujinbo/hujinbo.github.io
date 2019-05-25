@@ -1,7 +1,7 @@
 ---
 title: Markdown常用语法介绍
 date: 2019-04-14 20:00:28
-updated:
+updated: 2019-04-14 20:00:28
 tags: Markdown
 categories: 博客教程
 description:
