@@ -15,8 +15,9 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://hujinbo.me
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year/:month/:day/:urlname/
 permalink_defaults:
+  urlname: index
 
 # Directory
 source_dir: source
