@@ -15,9 +15,8 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://hujinbo.me
 root: /
-permalink: :year/:month/:day/:urlname/
+permalink: posts/:abbrlink/
 permalink_defaults:
-  urlname: index
 
 # Directory
 source_dir: source
@@ -91,6 +90,12 @@ search:
   field: post
   format: html
   limit: 10000
+
+# Abbrlink
+## Source: https://github.com/rozbo/hexo-abbrlink
+abbrlink:
+  alg: crc16  #support crc16(default) and crc32
+  rep: dec   #support dec(default) and hex
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
