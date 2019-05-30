@@ -348,6 +348,11 @@ codeblock:
     # Style: only 'flat' is currently available, leave it blank if you prefer default theme
     style:
 
+# End tag
+post_end_tag:
+  enabled: true
+  icon: paw # Icon name in fontawesome
+
 # Wechat Subscriber
 wechat_subscriber:
   enable: false
@@ -360,7 +365,7 @@ reward_settings:
   # You can show or hide reward in a specific article throuth `reward: true | false` in Front Matter.
   enable: true
   animation: false
-  comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
+  #comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
 
 reward:
   wechatpay: /images/wechatpay.png
