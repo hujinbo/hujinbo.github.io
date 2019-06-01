@@ -9,8 +9,9 @@
     "start": "hexo clean && hexo server",
     "debug": "hexo clean && hexo server --debug",
     "clean": "hexo clean",
-    "build": "hexo clean && hexo generate",
-    "deploy": "hexo clean && hexo deploy -generate"
+    "deploy": "hexo clean && hexo generate && gulp && hexo deploy",
+    "build-dev": "hexo clean && hexo generate",
+    "build-prod": "hexo clean && hexo generate && gulp"
   },
   "dependencies": {
     "hexo": "^3.8.0",
@@ -27,5 +28,14 @@
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3",
     "hexo-symbols-count-time": "^0.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-uglify": "^3.0.2"
   }
 }

@@ -1,28 +1,47 @@
-const {src, dest, series} = require('gulp');
+const {src, dest, parallel} = require('gulp');
 const babel = require('gulp-babel');
-const htmlclean = require('gulp-htmlclean');
 const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 
+const paths = {
+    html: {
+        src: './public/**/*.html',
+        dest: './public'
+    },
+    css: {
+        src: ['./public/**/*.css', '!./public/**/*.min.css'],
+        dest: './public'
+    },
+    js: {
+        src: ['./public/**/*.js', '!./public/**/*.min.js'],
+        dest: './public'
+    }
+};
+
 function minifyHtml() {
-    return src('./public/**/*.html')
-        .pipe(htmlclean())
-        .pipe(htmlmin())
-        .pipe(dest('./public'));
+    return src(paths.html.src)
+        .pipe(htmlmin({
+            removeComments: true,
+            collapseWhitespace: true,
+            conservativeCollapse: true,
+            minifyCSS: true,
+            minifyJS: true
+        }))
+        .pipe(dest(paths.html.dest));
 }
 
 function minifyCss() {
-    return src(['./public/**/*.css', '!./public/**/*.min.css'])
+    return src(paths.css.src)
         .pipe(cleanCSS())
-        .pipe(dest('./public'));
+        .pipe(dest(paths.css.dest));
 }
 
 function minifyJs() {
-    return src(['./public/**/*.js', '!./public/**/*.min.js'])
+    return src(paths.js.src)
         .pipe(babel())
         .pipe(uglify())
-        .pipe(dest('./public'));
+        .pipe(dest(paths.js.dest));
 }
 
-exports.default = series(minifyHtml, minifyCss, minifyJs);
+exports.default = parallel(minifyHtml, minifyCss, minifyJs);
