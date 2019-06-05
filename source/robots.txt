@@ -5,9 +5,6 @@ Allow: /categories/
 Allow: /tags/
 Disallow: /js/
 Disallow: /css/
-Disallow: /fonts/
-Disallow: /vendors/
-Disallow: /fancybox/
 
 Sitemap: https://hujinbo.me/sitemap.xml
 Sitemap: https://hujinbo.me/baidusitemap.xml
