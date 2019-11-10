@@ -33,3 +33,8 @@ description:
 
    ![](https://img.hujinbo.me/blog/20190624234542.png)
 
+6. 删除没用的文件
+
+   ![](https://img.hujinbo.me/blog/20190625000508.png)
+
+**注**：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。
