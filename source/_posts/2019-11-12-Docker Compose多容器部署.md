@@ -3,7 +3,6 @@ title: Docker Compose多容器部署
 tags: Docker
 categories: Docker
 comments: true
-reward: true
 mathjax: false
 abbrlink: 53410
 date: 2019-11-12 20:12:35
@@ -24,6 +23,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-
 ```bash
 sudo chmod +x /usr/local/bin/docker-compose
 ```
+
 <!-- more -->
 
 ## 语法介绍
