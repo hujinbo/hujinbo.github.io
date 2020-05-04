@@ -6,7 +6,7 @@
     "start": "hexo clean && hexo server",
     "debug": "hexo clean && hexo server --debug",
     "clean": "hexo clean",
-    "deploy": "hexo clean && hexo generate && gulp && hexo deploy",
+    "deploy": "hexo clean && hexo generate && gulp && hexo deploy && cloudbase hosting:deploy public -e blog-178078",
     "build-dev": "hexo clean && hexo generate",
     "build-prod": "hexo clean && hexo generate && gulp"
   },
