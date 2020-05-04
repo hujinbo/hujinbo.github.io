@@ -1,6 +1,6 @@
 const {src, dest, parallel} = require('gulp');
 const babel = require('gulp-babel');
-const htmlmin = require('gulp-htmlmin');
+const htmlmin = require('gulp-html-minifier-terser');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 
@@ -39,7 +39,9 @@ function minifyCss() {
 
 function minifyJs() {
     return src(paths.js.src)
-        .pipe(babel())
+        .pipe(babel({
+            presets: ['@babel/preset-env']
+        }))
         .pipe(uglify())
         .pipe(dest(paths.js.dest));
 }

@@ -14,9 +14,7 @@ description:
 
 1. 打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next
 
-   ![](https://img.hujinbo.me/blog/20190624231319.png)
-
-<!-- more -->
+   ![](https://img.hujinbo.me/blog/20190624231319.png)<!-- more -->
 
 2. 填写Maven GroupID、ArtifactID、Version等名称后，点击Next
 
