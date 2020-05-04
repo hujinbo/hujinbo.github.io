@@ -15,16 +15,18 @@
 
     ```bash
     cd hujinbo.github.io
-    npm install
+    yarn install
     ```
+    
+3. 安装Markdown解析器，[下载Pandoc](https://github.com/jgm/pandoc/releases/tag/2.9.2.1)，根据提示安装即可
 
-3. 最后，执行启动脚本即可：
+4. 最后，执行启动脚本即可：
 
     ```bash
-    npm run start
+    yarn run start
     ```
 
-4. 可通过浏览器访问 `localhost:4000`，检查站点是否正常运行。
+5. 可通过浏览器访问 `localhost:4000`，检查站点是否正常运行。
   
 
 ## 配置
@@ -99,6 +101,18 @@ hexo deploy -generate
 # 清理缓存和静态文件
 hexo clean
 ```
+
+### 部署到腾讯云静态网站托管
+```bash
+# 安装云开发CLI工具
+npm i -g @cloudbase/cli
+
+# 初始化云开发CLI
+cloudbase login
+
+# 上传到云开发静态托管中（最后的参数为云开发环境ID）
+cloudbase hosting:deploy public -e blog-178078
+```
   
 
 ## 格式
@@ -143,3 +157,4 @@ categories:
 
 - [Hexo官方文档](https://hexo.io/zh-cn/docs/)
 - [Next官方文档](https://theme-next.org/docs/)
+- [腾讯云静态网站托管](https://cloud.tencent.com/document/product/1210/43365)
