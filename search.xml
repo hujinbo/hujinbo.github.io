@@ -209,6 +209,33 @@ public class HelloWorld {
       </tags>
   </entry>
   <entry>
+    <title>SpringBoot快速入门</title>
+    <url>/posts/2197/</url>
+    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
+<ol type="1">
+<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><a id="more"></a></p></li>
+<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
+<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
+<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
+<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
+<li><p>删除没用的文件</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
+</ol>
+<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo标签插件常用语法介绍</title>
     <url>/posts/32268/</url>
     <content><![CDATA[<blockquote>
@@ -321,33 +348,6 @@ e=mc^2
       </categories>
       <tags>
         <tag>Tag Plugins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot快速入门</title>
-    <url>/posts/2197/</url>
-    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
-<ol type="1">
-<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><a id="more"></a></p></li>
-<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
-<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
-<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
-<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
-<li><p>删除没用的文件</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
-</ol>
-<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
-]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
