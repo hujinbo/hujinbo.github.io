@@ -539,46 +539,6 @@ e=mc^2
       </tags>
   </entry>
   <entry>
-    <title>Git快速入门</title>
-    <url>/posts/3267/</url>
-    <content><![CDATA[<blockquote>
-<p>Git是一个开源的分布式版本控制系统，用于高效快速地处理任何小型或大型的项目。</p>
-</blockquote>
-<h2 id="环境安装">环境安装</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
-<h2 id="初始化配置">初始化配置</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建SSH key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"hujinbo1995@126.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥，复制到github</span></span><br><span class="line">cat id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试连通性</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户信息</span></span><br><span class="line">git config --global user.name <span class="string">"hujinbo"</span></span><br><span class="line">git config --global user.email <span class="string">"hujinbo1995@126.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="常用命令">常用命令</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化工作区</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交文件到版本库</span></span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地仓库与远程仓库关联（先在github创建仓库）</span></span><br><span class="line">git remote add origin git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看仓库状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 回滚到某次提交</span></span><br><span class="line">git reset --hard 32580c6d77ce7a85f07b9a1ba620a46fa4830f5e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆仓库到本地</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加子模块</span></span><br><span class="line">git submodule add git@github.com:hujinbo/hexo-theme-next.git themes/next</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归克隆（包含子模块）</span></span><br><span class="line">git <span class="built_in">clone</span> --recursive git@github.com:hujinbo/hujinbo.github.io.git</span><br></pre></td></tr></table></figure>
-<h2 id="标签管理">标签管理</h2>
-<p>用于标记发布的版本，可以迅速回滚到某个标签状态</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有标签</span></span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建标签</span></span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定提交信息</span></span><br><span class="line">git tag -a v1.0.0 -m <span class="string">"v1版本"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除标签</span></span><br><span class="line">git tag -d v1.0.0</span><br><span class="line">git push origin -d v0.1-alpha</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签发布</span></span><br><span class="line">git push origin v1.0.0</span><br></pre></td></tr></table></figure>
-<h2 id="分支管理">分支管理</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分支</span></span><br><span class="line">git branch feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">git checkout feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并分支（将feature_1合并到master，需先切换到master）</span></span><br><span class="line">git merge feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有分支操作记录</span></span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-<h2 id="最佳实践">最佳实践</h2>
-<p>master分支存储正式发布的历史 develop分支作为功能收集的分支 feature分支作为功能分支，每个新功能都有一个自己的分支，使用develop分支作为父分支，当功能完成时，合并回develop release分支使用develop分支作为父分支，只应该做bug修复、文档生成和其他面向发布的任务。当bug修复完且稳定，应合并到develop和master并分配一个版本号并打上标签 hotfix分支，唯一可以从master分支fork出来的分支，修复完成应马上合并回master分支和develop分支，master分支应用新的版本号打tag</p>
-<p><img data-src="https://img.hujinbo.me/blog/20200109003136.png" /></p>
-<p>建议开发feature，经常从develop同步过来</p>
-<ol type="1">
-<li>提交前diff自己提交的代码，避免提交无用的文件。</li>
-<li>提交代码注释规范，</li>
-<li>使用独立分支开发，</li>
-<li>搞清冲突原因，不要随意丢弃别人的代码</li>
-<li>产品发布后，记得打tag，方便将来拉分支修bug</li>
-<li>版本号规范，稳定版发布前v0.1，v0.2 第一个稳定的版本v1.0</li>
-</ol>
-<h2 id="可视化工具">可视化工具</h2>
-<p>SourceTree</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nginx入门到实践</title>
     <url>/posts/64148/</url>
     <content><![CDATA[<blockquote>
@@ -845,6 +805,46 @@ e=mc^2
       </categories>
       <tags>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git快速入门</title>
+    <url>/posts/3267/</url>
+    <content><![CDATA[<blockquote>
+<p>Git是一个开源的分布式版本控制系统，用于高效快速地处理任何小型或大型的项目。</p>
+</blockquote>
+<h2 id="环境安装">环境安装</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
+<h2 id="初始化配置">初始化配置</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建SSH key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"hujinbo1995@126.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥，复制到github</span></span><br><span class="line">cat id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试连通性</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户信息</span></span><br><span class="line">git config --global user.name <span class="string">"hujinbo"</span></span><br><span class="line">git config --global user.email <span class="string">"hujinbo1995@126.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="常用命令">常用命令</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化工作区</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交文件到版本库</span></span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地仓库与远程仓库关联（先在github创建仓库）</span></span><br><span class="line">git remote add origin git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看仓库状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 回滚到某次提交</span></span><br><span class="line">git reset --hard 32580c6d77ce7a85f07b9a1ba620a46fa4830f5e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆仓库到本地</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加子模块</span></span><br><span class="line">git submodule add git@github.com:hujinbo/hexo-theme-next.git themes/next</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归克隆（包含子模块）</span></span><br><span class="line">git <span class="built_in">clone</span> --recursive git@github.com:hujinbo/hujinbo.github.io.git</span><br></pre></td></tr></table></figure>
+<h2 id="标签管理">标签管理</h2>
+<p>用于标记发布的版本，可以迅速回滚到某个标签状态</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有标签</span></span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建标签</span></span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定提交信息</span></span><br><span class="line">git tag -a v1.0.0 -m <span class="string">"v1版本"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除标签</span></span><br><span class="line">git tag -d v1.0.0</span><br><span class="line">git push origin -d v0.1-alpha</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签发布</span></span><br><span class="line">git push origin v1.0.0</span><br></pre></td></tr></table></figure>
+<h2 id="分支管理">分支管理</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分支</span></span><br><span class="line">git branch feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">git checkout feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并分支（将feature_1合并到master，需先切换到master）</span></span><br><span class="line">git merge feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有分支操作记录</span></span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="最佳实践">最佳实践</h2>
+<p>master分支存储正式发布的历史 develop分支作为功能收集的分支 feature分支作为功能分支，每个新功能都有一个自己的分支，使用develop分支作为父分支，当功能完成时，合并回develop release分支使用develop分支作为父分支，只应该做bug修复、文档生成和其他面向发布的任务。当bug修复完且稳定，应合并到develop和master并分配一个版本号并打上标签 hotfix分支，唯一可以从master分支fork出来的分支，修复完成应马上合并回master分支和develop分支，master分支应用新的版本号打tag</p>
+<p><img data-src="https://img.hujinbo.me/blog/20200109003136.png" /></p>
+<p>建议开发feature，经常从develop同步过来</p>
+<ol type="1">
+<li>提交前diff自己提交的代码，避免提交无用的文件。</li>
+<li>提交代码注释规范，</li>
+<li>使用独立分支开发，</li>
+<li>搞清冲突原因，不要随意丢弃别人的代码</li>
+<li>产品发布后，记得打tag，方便将来拉分支修bug</li>
+<li>版本号规范，稳定版发布前v0.1，v0.2 第一个稳定的版本v1.0</li>
+</ol>
+<h2 id="可视化工具">可视化工具</h2>
+<p>SourceTree</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
 </search>
