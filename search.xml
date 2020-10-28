@@ -209,42 +209,6 @@ public class HelloWorld {
       </tags>
   </entry>
   <entry>
-    <title>Docker环境搭建</title>
-    <url>/posts/47824/</url>
-    <content><![CDATA[<h2 id="linux-docker-安装">Linux Docker 安装</h2>
-<ol type="1">
-<li><p>卸载旧版本Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure></li>
-<li><p>安装Dokcer所需的一些系统工具：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></li>
-</ol>
-<a id="more"></a>
-<ol start="3" type="1">
-<li><p>添加Dokcer软件源（使用阿里云国内镜像源，解决下载慢问题），并更新yum缓存：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure></li>
-<li><p>安装最新版Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure></li>
-<li><p>启动Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure></li>
-<li><p>配置镜像加速器，可解决国内拉取Docker镜像慢问题。打开阿里云<span class="exturl" data-url="aHR0cHM6Ly9jci5jb25zb2xlLmFsaXl1bi5jb20vY24tc2hlbnpoZW4vaW5zdGFuY2VzL21pcnJvcnM=">容器镜像服务-镜像加速器<i class="fa fa-external-link-alt"></i></span>获取你的专属加速地址，替换下方<code>https://xxxxxxxx.mirror.aliyuncs.com</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://xxxxxxxx.mirror.aliyuncs.com"</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
-<li><p>运行<code>sudo docker run hello-world</code>，出现如下内容表示安装成功：</p>
-<p><img data-src="https://img.hujinbo.me/blog/20191108222449.png" /></p></li>
-<li><p>运行<code>sudo docker version</code>，可查看当前安装的docker版本：</p>
-<p><img data-src="https://img.hujinbo.me/blog/20191108222254.png" /></p></li>
-</ol>
-<div class="note warning">
-            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vaW5zdGFsbC9saW51eC9kb2NrZXItY2UvY2VudG9zLw==">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
-          </div>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo标签插件常用语法介绍</title>
     <url>/posts/32268/</url>
     <content><![CDATA[<blockquote>
@@ -360,41 +324,59 @@ e=mc^2
       </tags>
   </entry>
   <entry>
-    <title>Docker Compose多容器部署</title>
-    <url>/posts/53410/</url>
-    <content><![CDATA[<blockquote>
-<p>Docker Compose是用于定义和运行多容器Docker应用程序的工具，可以通过YAML文件创建、管理多个容器。</p>
-</blockquote>
-<h2 id="安装">安装</h2>
+    <title>SpringBoot快速入门</title>
+    <url>/posts/2197/</url>
+    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
 <ol type="1">
-<li><p>下载Docker Compose可执行文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.24.1/docker-compose-<span class="variable">$(uname -s)</span>-<span class="variable">$(uname -m)</span>"</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
-<li><p>修改可执行权限 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
+<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><a id="more"></a></p></li>
+<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
+<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
+<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
+<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
+<li><p>删除没用的文件</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
+</ol>
+<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker环境搭建</title>
+    <url>/posts/47824/</url>
+    <content><![CDATA[<h2 id="linux-docker-安装">Linux Docker 安装</h2>
+<ol type="1">
+<li><p>卸载旧版本Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure></li>
+<li><p>安装Dokcer所需的一些系统工具：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></li>
 </ol>
 <a id="more"></a>
-<h2 id="语法介绍">语法介绍</h2>
-<p>一个Services代表一个container，可以从image创建，也可以通过build创建，可以指定volume和network。如下通过docker部署wordpress应用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create -d bridge my-net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -d --name wordpress --network my-net -p 8080:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_PASSWORD=root wordpress</span><br><span class="line">docker run -d --name mysql --network my-net -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress mysql:5.7</span><br></pre></td></tr></table></figure>
-<p>通过Docker Compose部署则只需编写如下文件，执行<code>docker-compose up</code>命令即可：</p>
-<figure class="highlight bash"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">version: <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      WORDPRESS_DB_PASSWORD: root</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: wordpress</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql-data:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql-data:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  my-net:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure>
-<h2 id="常用命令">常用命令</h2>
-<h3 id="查看版本">查看版本</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose -v</span><br></pre></td></tr></table></figure>
-<h3 id="构建容器">构建容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
-<h3 id="启动服务">启动服务</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认使用当前目录下的docker-compose.yml</span></span><br><span class="line">docker-compose up</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在后台运行，不打印日志</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定文件启动</span></span><br><span class="line">docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
-<h3 id="查看镜像">查看镜像</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose images</span><br></pre></td></tr></table></figure>
-<h3 id="查看容器">查看容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
-<h3 id="进入容器">进入容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql bash</span><br></pre></td></tr></table></figure>
-<h3 id="停止服务">停止服务</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 停止但不删除容器</span></span><br><span class="line">docker-compose stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器并移除网络</span></span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
-<h3 id="水平扩展">水平扩展</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定服务运行的容器个数，格式：service=num</span></span><br><span class="line">docker-compose up -d --scale wordpress=3</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li><p>添加Dokcer软件源（使用阿里云国内镜像源，解决下载慢问题），并更新yum缓存：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure></li>
+<li><p>安装最新版Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure></li>
+<li><p>启动Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure></li>
+<li><p>配置镜像加速器，可解决国内拉取Docker镜像慢问题。打开阿里云<span class="exturl" data-url="aHR0cHM6Ly9jci5jb25zb2xlLmFsaXl1bi5jb20vY24tc2hlbnpoZW4vaW5zdGFuY2VzL21pcnJvcnM=">容器镜像服务-镜像加速器<i class="fa fa-external-link-alt"></i></span>获取你的专属加速地址，替换下方<code>https://xxxxxxxx.mirror.aliyuncs.com</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://xxxxxxxx.mirror.aliyuncs.com"</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+<li><p>运行<code>sudo docker run hello-world</code>，出现如下内容表示安装成功：</p>
+<p><img data-src="https://img.hujinbo.me/blog/20191108222449.png" /></p></li>
+<li><p>运行<code>sudo docker version</code>，可查看当前安装的docker版本：</p>
+<p><img data-src="https://img.hujinbo.me/blog/20191108222254.png" /></p></li>
+</ol>
 <div class="note warning">
-            <p>更多内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vY29tcG9zZS8=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
+            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vaW5zdGFsbC9saW51eC9kb2NrZXItY2UvY2VudG9zLw==">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
           </div>
 ]]></content>
       <categories>
@@ -512,30 +494,48 @@ e=mc^2
       </tags>
   </entry>
   <entry>
-    <title>SpringBoot快速入门</title>
-    <url>/posts/2197/</url>
-    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
+    <title>Docker Compose多容器部署</title>
+    <url>/posts/53410/</url>
+    <content><![CDATA[<blockquote>
+<p>Docker Compose是用于定义和运行多容器Docker应用程序的工具，可以通过YAML文件创建、管理多个容器。</p>
+</blockquote>
+<h2 id="安装">安装</h2>
 <ol type="1">
-<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><a id="more"></a></p></li>
-<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
-<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
-<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
-<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
-<li><p>删除没用的文件</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
+<li><p>下载Docker Compose可执行文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">"https://github.com/docker/compose/releases/download/1.24.1/docker-compose-<span class="variable">$(uname -s)</span>-<span class="variable">$(uname -m)</span>"</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改可执行权限 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
+<a id="more"></a>
+<h2 id="语法介绍">语法介绍</h2>
+<p>一个Services代表一个container，可以从image创建，也可以通过build创建，可以指定volume和network。如下通过docker部署wordpress应用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create -d bridge my-net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -d --name wordpress --network my-net -p 8080:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_PASSWORD=root wordpress</span><br><span class="line">docker run -d --name mysql --network my-net -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>通过Docker Compose部署则只需编写如下文件，执行<code>docker-compose up</code>命令即可：</p>
+<figure class="highlight bash"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">version: <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      WORDPRESS_DB_PASSWORD: root</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: wordpress</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql-data:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql-data:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  my-net:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="查看版本">查看版本</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose -v</span><br></pre></td></tr></table></figure>
+<h3 id="构建容器">构建容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务">启动服务</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认使用当前目录下的docker-compose.yml</span></span><br><span class="line">docker-compose up</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在后台运行，不打印日志</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定文件启动</span></span><br><span class="line">docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
+<h3 id="查看镜像">查看镜像</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose images</span><br></pre></td></tr></table></figure>
+<h3 id="查看容器">查看容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
+<h3 id="进入容器">进入容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql bash</span><br></pre></td></tr></table></figure>
+<h3 id="停止服务">停止服务</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 停止但不删除容器</span></span><br><span class="line">docker-compose stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器并移除网络</span></span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
+<h3 id="水平扩展">水平扩展</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定服务运行的容器个数，格式：service=num</span></span><br><span class="line">docker-compose up -d --scale wordpress=3</span><br></pre></td></tr></table></figure>
+<div class="note warning">
+            <p>更多内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vY29tcG9zZS8=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
+          </div>
 ]]></content>
       <categories>
-        <category>SpringBoot</category>
+        <category>Docker</category>
       </categories>
       <tags>
-        <tag>SpringBoot</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -848,65 +848,6 @@ e=mc^2
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Maven快速入门</title>
-    <url>/posts/29012/</url>
-    <content><![CDATA[<h2 id="环境安装">环境安装</h2>
-<p>访问<span class="exturl" data-url="aHR0cHM6Ly9tYXZlbi5hcGFjaGUub3JnL2Rvd25sb2FkLmNnaQ==">Maven下载<i class="fa fa-external-link-alt"></i></span>页面，选择<code>Binary tar.gz archive</code>下载后解压</p>
-<h3 id="window安装">window安装</h3>
-<ol type="1">
-<li><p>新增环境变量。变量名：<code>MAVEN_HOME</code>，变量值（Maven安装目录）：<code>C:\Software\Maven\apache-maven-3.6.0</code> <img data-src="https://img.hujinbo.me/blog/20200128213305.png" /></p></li>
-<li><p>修改Path，添加<code>%MAVEN_HOME%\bin</code> <img data-src="https://img.hujinbo.me/blog/20200128213431.png" /></p></li>
-<li><p>查看版本号<code>mvn -v</code></p></li>
-</ol>
-<h3 id="linux安装">Linux安装</h3>
-<ol type="1">
-<li>上传下载好的文件到服务器，解压至<code>/usr/local</code>目录下</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf apache-maven-3.6.3-bin.tar.gz</span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/maven</span><br><span class="line">mv apache-maven-3.6.3 /usr/<span class="built_in">local</span>/maven/</span><br></pre></td></tr></table></figure>
-<ol start="2" type="1">
-<li>执行<code>vi /etc/profile</code>，添加环境变量如下环境变量并保存</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> MAVEN_HOME=/usr/<span class="built_in">local</span>/maven/apache-maven-3.6.3</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</span><br></pre></td></tr></table></figure>
-<ol start="3" type="1">
-<li><p>执行<code>source /etc/profile</code>使环境变量生效</p></li>
-<li><p>查看版本号<code>mvn -v</code></p></li>
-</ol>
-<h2 id="常用命令">常用命令</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 编译项目</span></span><br><span class="line">mvn compile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行测试用例</span></span><br><span class="line">mvn <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打包项目</span></span><br><span class="line">mvn package</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除target</span></span><br><span class="line">mvn clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装jar包到本地仓库中</span></span><br><span class="line">mvn install</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mvn archetype:generate</span><br><span class="line">-DgroupId=组织名 格式：公司域名反写+项目名 如：com.hujinbo.blog</span><br><span class="line">-DartifactId=项目名-模块名 blog-util blog-web</span><br><span class="line">-Dversion=版本号 0.0.1-SNAPSHOT</span><br><span class="line">-Dpackage=代码所存在的包名 com.hujinbo.blog.util</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译</span></span><br><span class="line">mvn clean compile</span><br><span class="line">mvn clean package -Dmaven.test.skip=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>更倾向于在用户使用范围内定制settings.xml</p>
-<p>0.0.1 大版本号.分支版本号.小版本号</p>
-<p>snapshot 快照版 alpha 内测 beta 公测 Release 稳定版 GA 正式发布</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.nascent.quant<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>quant-bi-restful<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--默认是jar [war zip pom]--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>quant-bi-restful<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">description</span>&gt;</span>bi restful module<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">type</span>&gt;</span><span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">           <span class="comment">&lt;!--依赖范围--&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">scope</span>&gt;</span><span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">           <span class="comment">&lt;!--设置依赖是否可选--&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">optional</span>&gt;</span><span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">           <span class="comment">&lt;!--排除依赖传递列表--&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span><span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="坐标">坐标</h2>
-<ol type="1">
-<li>groupId</li>
-<li>artifactId</li>
-<li>version</li>
-</ol>
-<h2 id="仓库">仓库</h2>
-<p>先在本地仓库中查找，若查不到则到中央仓库查找，如果都查找不到，就会报错</p>
-<p>默认仓库：https://repo.maven.apache.org/maven2 镜像仓库：国内加速的镜像仓库</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- mirror</span></span><br><span class="line"><span class="comment">   | Specifies a repository mirror site to use instead of a given repository. The repository that</span></span><br><span class="line"><span class="comment">   | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used</span></span><br><span class="line"><span class="comment">   | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>mirrorId<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 为哪个仓库配置镜像，如默认的中央仓库central。使用*号则匹配所有的仓库，所有的仓库都会转向此镜像仓库 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>repositoryId<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Human Readable Name for this Mirror.<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://my.repository.com/repo/path<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="仓库位置">仓库位置</h2>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- localRepository</span></span><br><span class="line"><span class="comment"> | The path to the local repository maven will use to store artifacts.</span></span><br><span class="line"><span class="comment"> |</span></span><br><span class="line"><span class="comment"> | Default: $&#123;user.home&#125;/.m2/repository</span></span><br><span class="line"><span class="comment">&lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="生命周期和插件">生命周期和插件</h2>
-<p>clean :清理项目 default :构建项目 site :生成项目站点</p>
-<h2 id="插件">插件</h2>
-<p>https://maven.apache.org/plugins/index.html <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar-no-fork<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="依赖范围">依赖范围</h2>
-<p>默认compile https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope</p>
-<h2 id="依赖传递">依赖传递</h2>
-<h2 id="仓库地址">仓库地址</h2>
-<p>https://mvnrepository.com/</p>
-]]></content>
-      <categories>
-        <category>Maven</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
