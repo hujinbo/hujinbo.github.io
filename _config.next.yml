@@ -905,16 +905,16 @@ vendors:
 
   # Internal version: 3.1.0
   # anime: //cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js
-  anime: //cdn.hujinbo.me/libs/anime/3.1.0/anime.min.js
+  anime: //cdn.hujinbo.me/libs/anime/3.2.1/anime.min.js
 
   # Internal version: 5.13.0
   # fontawesome: //cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css
   # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css
-  fontawesome: //cdn.hujinbo.me/libs/font-awesome/5.13.0/css/all.min.css
+  fontawesome: //cdn.hujinbo.me/libs/font-awesome/5.15.4/css/all.min.css
 
   # MathJax
   # mathjax: //cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  mathjax: //cdn.hujinbo.me/libs/mathjax/3.0.5/tex-mml-chtml.js
+  mathjax: //cdn.hujinbo.me/libs/mathjax/3.2.0/tex-mml-chtml.js
 
   # KaTeX
   # katex: //cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css
@@ -933,7 +933,7 @@ vendors:
   # jquery: //cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js
   # fancybox: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js
   # fancybox_css: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css
-  jquery: //cdn.hujinbo.me/libs/jquery/3.5.0/jquery.min.js
+  jquery: //cdn.hujinbo.me/libs/jquery/3.6.0/jquery.min.js
   fancybox: //cdn.hujinbo.me/libs/fancybox/3.5.7/jquery.fancybox.min.js
   fancybox_css: //cdn.hujinbo.me/libs/fancybox/3.5.7/jquery.fancybox.min.css
 
@@ -944,7 +944,7 @@ vendors:
   # Lazyload
   # lazyload: //cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js
   # lazyload: //cdnjs.cloudflare.com/ajax/libs/lozad.js/1.14.0/lozad.min.js
-  lazyload: //cdn.hujinbo.me/libs/lazyload/1.14.0/lozad.min.js
+  lazyload: //cdn.hujinbo.me/libs/lazyload/1.16.0/lozad.min.js
 
   # Pangu
   # pangu: //cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js
@@ -964,7 +964,7 @@ vendors:
   # Valine
   # valine: //cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js
   # valine: //cdnjs.cloudflare.com/ajax/libs/valine/1.3.10/Valine.min.js
-  valine: //cdn.hujinbo.me/libs/valine/1.4.14/Valine.min.js
+  valine: //cdn.hujinbo.me/libs/valine/1.4.16/Valine.min.js
 
   # Gitalk
   # gitalk_js: //cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js
@@ -981,7 +981,7 @@ vendors:
   # Mermaid
   # mermaid: //cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js
   # mermaid: //cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.0/mermaid.min.js
-  mermaid: //cdn.hujinbo.me/libs/mermaid/8.5.0/mermaid.min.js
+  mermaid: //cdn.hujinbo.me/libs/mermaid/8.13.9/mermaid.min.js
 
   # Internal version: 1.2.1
   # velocity: //cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js
