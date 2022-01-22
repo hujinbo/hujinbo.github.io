@@ -28,157 +28,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo标签插件常用语法介绍</title>
-    <url>/posts/32268/</url>
-    <content><![CDATA[<blockquote>
-<p>标签插件（Tag Plugins）是Hexo提供的一种快速生成特定内容的插件，以下标签是Next主题提供的标签：</p>
-</blockquote>
-<h2 id="居中引用">居中引用</h2>
-<p>用于文章开篇引用或者结束语之前的总结引用：</p>
-<pre><code>&#123;% cq %&#125;你所做的事情，也许暂时看不到成功，但不要灰心，你不是没有成长，而是在扎根。&#123;% endcq %&#125;</code></pre>
-<p>显示效果如下所示：</p>
-<blockquote class="blockquote-center">
-            <i class="fa fa-quote-left"></i>
-            <p>你所做的事情，也许暂时看不到成功，但不要灰心，你不是没有成长，而是在扎根。</p>
-
-            <i class="fa fa-quote-right"></i>
-          </blockquote>
-<span id="more"></span>
-<h2 id="插入按钮">插入按钮</h2>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% btn url, text, icon [class], [title] %&#125;</span><br><span class="line"></span><br><span class="line">url     : URL地址</span><br><span class="line">text    : 按钮文字，未指定图标时为必填</span><br><span class="line">icon    : FontAwesome图标名称（开头没有&#x27;fa-&#x27;），未指定文字时为必填</span><br><span class="line">[class] : FontAwesome样式名称，如：fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line">[title] : 鼠标悬停时的提示</span><br><span class="line"></span><br><span class="line">示例：&#123;% btn https://hujinbo.me, 博客主页, home fa-fw, 点击跳转我的博客主页 %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<a class="btn" href="https://hujinbo.me" title="点击跳转我的博客主页">
-            <i class="fa fa-home fa-fw"></i>博客主页
-          </a>
-<h2 id="颜色标签">颜色标签</h2>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% label [class]@Text %&#125;</span><br><span class="line"></span><br><span class="line">[class] : default | primary | success | info | warning | danger</span><br><span class="line"></span><br><span class="line">示例：&#123;% label warning@你好 %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<span class="label warning">你好</span>
-<h2 id="提示标签">提示标签</h2>
-<p>在博客中使用Bootstrap Callout，主要用于提示信息：</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% note [class] [no-icon] %&#125;内容&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">[class]   : default | primary | success | info | warning | danger</span><br><span class="line">[no-icon] : 禁用图标</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">&#123;% note warning %&#125;</span><br><span class="line">注：更多详细内容，请阅读<span class="strong">**[<span class="string">官方文档</span>](<span class="link">https://theme-next.org/docs/tag-plugins/note</span>)**</span></span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<div class="note warning">
-            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZy9kb2NzL3RhZy1wbHVnaW5zL25vdGU=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
-          </div>
-<h2 id="tab标签">Tab标签</h2>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">&#123;% tabs Unique name, [index] %&#125;</span><br><span class="line">&lt;!-- tab [Tab caption] [@icon] --&gt;</span><br><span class="line">标签内容</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br><span class="line"></span><br><span class="line">Unique name   : 标签唯一标识名称。该名称将作为id前缀，故应使用英文名称，且保证在当前文章/页面唯一，不能含有逗号。</span><br><span class="line">[index]       : 激活的标签索引数值。不指定时默认选中第1个标签；当值为-1时，不会选中任何标签。</span><br><span class="line">[Tab caption] : 标签标题名称。如果没有指定标题，将使用 唯一标识名称+索引 作为当前标题名称；没有指定标题但设置了图标，则标题为空。</span><br><span class="line">[@icon]       : FontAwesome图标名称（开头没有&#x27;fa-&#x27;）</span><br><span class="line"><span class="code">                </span></span><br><span class="line"><span class="code">示例：</span></span><br><span class="line"><span class="code">&#123;% tabs demo1, 2 %&#125;</span></span><br><span class="line"><span class="code">&lt;!-- tab 标签1 @home --&gt;</span></span><br><span class="line"><span class="code">标签1内容</span></span><br><span class="line"><span class="code">&lt;!-- endtab --&gt;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">&lt;!-- tab 标签2@archive --&gt;</span><br><span class="line">标签2内容</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- tab 标签3 @th --&gt;</span><br><span class="line">标签3内容</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<div class="tabs" id="demo1"><ul class="nav-tabs"><li class="tab"><a href="#demo1-1"><i class="fa fa-home"></i>标签1</a></li><li class="tab active"><a href="#demo1-2"><i class="fa fa-archive"></i>标签2</a></li><li class="tab"><a href="#demo1-3"><i class="fa fa-th"></i>标签3</a></li></ul><div class="tab-content"><div class="tab-pane" id="demo1-1"><p>标签1内容</p></div><div class="tab-pane active" id="demo1-2"><p>标签2内容</p></div><div class="tab-pane" id="demo1-3"><p>标签3内容</p></div></div></div>
-<h2 id="插入组图">插入组图</h2>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% gp [group]-[layout] %&#125;&#123;% endgp %&#125;</span><br><span class="line"></span><br><span class="line">[group]  : 要在组中添加的图片总数</span><br><span class="line">[layout] : 在分组下默认显示的图片</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">&#123;% gp 4-2 %&#125;</span><br><span class="line">  ![](/images/favicon-16x16.png)</span><br><span class="line">  ![](/images/favicon-32x32.png)</span><br><span class="line">  ![](/images/favicon-16x16.png)</span><br><span class="line">  ![](/images/favicon-32x32.png)</span><br><span class="line">&#123;% endgp %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img data-src="/images/favicon-16x16.png" /></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img data-src="/images/favicon-32x32.png" /></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img data-src="/images/favicon-16x16.png" /></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img data-src="/images/favicon-32x32.png" /></div></div></div></div>
-<h2 id="插入视频">插入视频</h2>
-<pre><code>&#123;% video https://cdn.hujinbo.me/video/demo.mp4 %&#125;</code></pre>
-<p>显示效果如下所示：</p>
-<video src="https://cdn.hujinbo.me/video/demo.mp4" preload="metadata" controls playsinline poster="">Sorry, your browser does not support the video tag.</video>
-<h2 id="插入pdf">插入PDF</h2>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% pdf url [height] %&#125;</span><br><span class="line"></span><br><span class="line">[url]    : URL地址</span><br><span class="line">[height] : 显示高度</span><br><span class="line"></span><br><span class="line">示例：&#123;% pdf https://cdn.hujinbo.me/pdf/demo.pdf 790px %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<div class="pdfobject-container" data-target="https://cdn.hujinbo.me/pdf/demo.pdf" data-height="790px"></div>
-<h2 id="流程图">流程图</h2>
-<p>用类似Markdown语法的方式生成流程图，详见<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2tuc3YvbWVybWFpZA==">mermaid官方文档<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% mermaid type %&#125;&#123;% endmermaid %&#125;</span><br><span class="line"></span><br><span class="line">type : mermaid图表类型</span><br></pre></td></tr></table></figure>
-<h3 id="流程图-1">流程图</h3>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid graph LR %&#125;</span><br><span class="line">ST[开始]--&gt;A</span><br><span class="line">A[用户管理]--&gt;B&#123;是否注册&#125;</span><br><span class="line">B--&gt;|是|B1(输入用户名密码)</span><br><span class="line">B--&gt;|否|B2(注册)</span><br><span class="line">B1--&gt;C[登录]</span><br><span class="line">C--&gt;D[完善个人信息]</span><br><span class="line">B2--&gt;E[注册完成]</span><br><span class="line">E--&gt;B</span><br><span class="line">E--&gt;END[结束]</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<pre class="mermaid" style="text-align: center;">
-            graph LR
-            ST[开始]-->A
-A[用户管理]-->B{是否注册}
-B-->|是|B1(输入用户名密码)
-B-->|否|B2(注册)
-B1-->C[登录]
-C-->D[完善个人信息]
-B2-->E[注册完成]
-E-->B
-E-->END[结束]
-          </pre>
-<h3 id="时序图">时序图</h3>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid sequenceDiagram %&#125;</span><br><span class="line">participant A as 客户</span><br><span class="line">participant B as 取款机</span><br><span class="line">participant C as 银行</span><br><span class="line">A-&gt;&gt;B: 请求取款</span><br><span class="line">B-&gt;&gt;C: 取款请求</span><br><span class="line">Note right of C: 处理请求...</span><br><span class="line">C--&gt;&gt;B: 请求结果</span><br><span class="line">B--&gt;&gt;A: 请求结果</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<pre class="mermaid" style="text-align: center;">
-            sequenceDiagram
-            participant A as 客户
-participant B as 取款机
-participant C as 银行
-A->>B: 请求取款
-B->>C: 取款请求
-Note right of C: 处理请求...
-C-->>B: 请求结果
-B-->>A: 请求结果
-          </pre>
-<h3 id="甘特图">甘特图</h3>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid gantt %&#125;</span><br><span class="line">title 项目进度规划表</span><br><span class="line">dateFormat YYYY-MM-DD</span><br><span class="line">section 前期</span><br><span class="line">需求分析:2019-04-11, 8d</span><br><span class="line">section 中期</span><br><span class="line">编码开发:2019-04-19, 15d</span><br><span class="line">section 后期</span><br><span class="line">系统测试:2019-04-26, 15d</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<pre class="mermaid" style="text-align: center;">
-            gantt
-            title 项目进度规划表
-dateFormat YYYY-MM-DD
-section 前期
-需求分析:2019-04-11, 8d
-section 中期
-编码开发:2019-04-19, 15d
-section 后期
-系统测试:2019-04-26, 15d
-          </pre>
-<h2 id="数学公式">数学公式</h2>
-<p>使用 <code>\tag&#123;&#125;</code> 给公式编号:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;equation&#125; \tag&#123;a&#125; \label&#123;eq1&#125;</span><br><span class="line">e=mc^2</span><br><span class="line">\end&#123;equation&#125;$$</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<p><span class="math display">\[\begin{equation} \tag{a} \label{eq1}
-e=mc^2
-\end{equation}\]</span></p>
-<p>使用 <code>\eqref&#123;&#125;</code> 引用公式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">质能方程 $\eqref&#123;eq1&#125;$ 是爱因斯坦提出的</span><br></pre></td></tr></table></figure>
-<p>显示效果如下所示：</p>
-<p>质能方程 <span class="math inline">\(\eqref{eq1}\)</span> 是爱因斯坦提出的</p>
-]]></content>
-      <categories>
-        <category>博客教程</category>
-      </categories>
-      <tags>
-        <tag>Tag Plugins</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker环境搭建</title>
-    <url>/posts/47824/</url>
-    <content><![CDATA[<h2 id="linux-docker-安装">Linux Docker 安装</h2>
-<ol type="1">
-<li><p>卸载旧版本Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure></li>
-<li><p>安装Dokcer所需的一些系统工具：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></li>
-</ol>
-<span id="more"></span>
-<ol start="3" type="1">
-<li><p>添加Dokcer软件源（使用阿里云国内镜像源，解决下载慢问题），并更新yum缓存：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure></li>
-<li><p>安装最新版Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure></li>
-<li><p>启动Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure></li>
-<li><p>配置镜像加速器，可解决国内拉取Docker镜像慢问题。打开阿里云<span class="exturl" data-url="aHR0cHM6Ly9jci5jb25zb2xlLmFsaXl1bi5jb20vY24tc2hlbnpoZW4vaW5zdGFuY2VzL21pcnJvcnM=">容器镜像服务-镜像加速器<i class="fa fa-external-link-alt"></i></span>获取你的专属加速地址，替换下方<code>https://xxxxxxxx.mirror.aliyuncs.com</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://xxxxxxxx.mirror.aliyuncs.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
-<li><p>运行<code>sudo docker run hello-world</code>，出现如下内容表示安装成功：</p>
-<p><img data-src="https://img.hujinbo.me/blog/20191108222449.png" /></p></li>
-<li><p>运行<code>sudo docker version</code>，可查看当前安装的docker版本：</p>
-<p><img data-src="https://img.hujinbo.me/blog/20191108222254.png" /></p></li>
-</ol>
-<div class="note warning">
-            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vaW5zdGFsbC9saW51eC9kb2NrZXItY2UvY2VudG9zLw==">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
-          </div>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown常用语法介绍</title>
     <url>/posts/26028/</url>
     <content><![CDATA[<blockquote>
@@ -387,6 +236,202 @@ public class HelloWorld &#123;
       </tags>
   </entry>
   <entry>
+    <title>Hexo标签插件常用语法介绍</title>
+    <url>/posts/32268/</url>
+    <content><![CDATA[<blockquote>
+<p>标签插件（Tag Plugins）是Hexo提供的一种快速生成特定内容的插件，以下标签是Next主题提供的标签：</p>
+</blockquote>
+<h2 id="居中引用">居中引用</h2>
+<p>用于文章开篇引用或者结束语之前的总结引用：</p>
+<pre><code>&#123;% cq %&#125;你所做的事情，也许暂时看不到成功，但不要灰心，你不是没有成长，而是在扎根。&#123;% endcq %&#125;</code></pre>
+<p>显示效果如下所示：</p>
+<blockquote class="blockquote-center">
+            <i class="fa fa-quote-left"></i>
+            <p>你所做的事情，也许暂时看不到成功，但不要灰心，你不是没有成长，而是在扎根。</p>
+
+            <i class="fa fa-quote-right"></i>
+          </blockquote>
+<span id="more"></span>
+<h2 id="插入按钮">插入按钮</h2>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% btn url, text, icon [class], [title] %&#125;</span><br><span class="line"></span><br><span class="line">url     : URL地址</span><br><span class="line">text    : 按钮文字，未指定图标时为必填</span><br><span class="line">icon    : FontAwesome图标名称（开头没有&#x27;fa-&#x27;），未指定文字时为必填</span><br><span class="line">[class] : FontAwesome样式名称，如：fa-fw | fa-lg | fa-2x | fa-3x | fa-4x | fa-5x</span><br><span class="line">[title] : 鼠标悬停时的提示</span><br><span class="line"></span><br><span class="line">示例：&#123;% btn https://hujinbo.me, 博客主页, home fa-fw, 点击跳转我的博客主页 %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<a class="btn" href="https://hujinbo.me" title="点击跳转我的博客主页">
+            <i class="fa fa-home fa-fw"></i>博客主页
+          </a>
+<h2 id="颜色标签">颜色标签</h2>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% label [class]@Text %&#125;</span><br><span class="line"></span><br><span class="line">[class] : default | primary | success | info | warning | danger</span><br><span class="line"></span><br><span class="line">示例：&#123;% label warning@你好 %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<span class="label warning">你好</span>
+<h2 id="提示标签">提示标签</h2>
+<p>在博客中使用Bootstrap Callout，主要用于提示信息：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% note [class] [no-icon] %&#125;内容&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line">[class]   : default | primary | success | info | warning | danger</span><br><span class="line">[no-icon] : 禁用图标</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">&#123;% note warning %&#125;</span><br><span class="line">注：更多详细内容，请阅读<span class="strong">**[<span class="string">官方文档</span>](<span class="link">https://theme-next.org/docs/tag-plugins/note</span>)**</span></span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<div class="note warning">
+            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZy9kb2NzL3RhZy1wbHVnaW5zL25vdGU=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
+          </div>
+<h2 id="tab标签">Tab标签</h2>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：</span><br><span class="line">&#123;% tabs Unique name, [index] %&#125;</span><br><span class="line">&lt;!-- tab [Tab caption] [@icon] --&gt;</span><br><span class="line">标签内容</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br><span class="line"></span><br><span class="line">Unique name   : 标签唯一标识名称。该名称将作为id前缀，故应使用英文名称，且保证在当前文章/页面唯一，不能含有逗号。</span><br><span class="line">[index]       : 激活的标签索引数值。不指定时默认选中第1个标签；当值为-1时，不会选中任何标签。</span><br><span class="line">[Tab caption] : 标签标题名称。如果没有指定标题，将使用 唯一标识名称+索引 作为当前标题名称；没有指定标题但设置了图标，则标题为空。</span><br><span class="line">[@icon]       : FontAwesome图标名称（开头没有&#x27;fa-&#x27;）</span><br><span class="line"><span class="code">                </span></span><br><span class="line"><span class="code">示例：</span></span><br><span class="line"><span class="code">&#123;% tabs demo1, 2 %&#125;</span></span><br><span class="line"><span class="code">&lt;!-- tab 标签1 @home --&gt;</span></span><br><span class="line"><span class="code">标签1内容</span></span><br><span class="line"><span class="code">&lt;!-- endtab --&gt;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">&lt;!-- tab 标签2@archive --&gt;</span><br><span class="line">标签2内容</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- tab 标签3 @th --&gt;</span><br><span class="line">标签3内容</span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<div class="tabs" id="demo1"><ul class="nav-tabs"><li class="tab"><a href="#demo1-1"><i class="fa fa-home"></i>标签1</a></li><li class="tab active"><a href="#demo1-2"><i class="fa fa-archive"></i>标签2</a></li><li class="tab"><a href="#demo1-3"><i class="fa fa-th"></i>标签3</a></li></ul><div class="tab-content"><div class="tab-pane" id="demo1-1"><p>标签1内容</p></div><div class="tab-pane active" id="demo1-2"><p>标签2内容</p></div><div class="tab-pane" id="demo1-3"><p>标签3内容</p></div></div></div>
+<h2 id="插入组图">插入组图</h2>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% gp [group]-[layout] %&#125;&#123;% endgp %&#125;</span><br><span class="line"></span><br><span class="line">[group]  : 要在组中添加的图片总数</span><br><span class="line">[layout] : 在分组下默认显示的图片</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">&#123;% gp 4-2 %&#125;</span><br><span class="line">  ![](/images/favicon-16x16.png)</span><br><span class="line">  ![](/images/favicon-32x32.png)</span><br><span class="line">  ![](/images/favicon-16x16.png)</span><br><span class="line">  ![](/images/favicon-32x32.png)</span><br><span class="line">&#123;% endgp %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img data-src="/images/favicon-16x16.png" /></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img data-src="/images/favicon-32x32.png" /></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img data-src="/images/favicon-16x16.png" /></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img data-src="/images/favicon-32x32.png" /></div></div></div></div>
+<h2 id="插入视频">插入视频</h2>
+<pre><code>&#123;% video https://cdn.hujinbo.me/video/demo.mp4 %&#125;</code></pre>
+<p>显示效果如下所示：</p>
+<video src="https://cdn.hujinbo.me/video/demo.mp4" preload="metadata" controls playsinline poster="">Sorry, your browser does not support the video tag.</video>
+<h2 id="插入pdf">插入PDF</h2>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% pdf url [height] %&#125;</span><br><span class="line"></span><br><span class="line">[url]    : URL地址</span><br><span class="line">[height] : 显示高度</span><br><span class="line"></span><br><span class="line">示例：&#123;% pdf https://cdn.hujinbo.me/pdf/demo.pdf 790px %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<div class="pdfobject-container" data-target="https://cdn.hujinbo.me/pdf/demo.pdf" data-height="790px"></div>
+<h2 id="流程图">流程图</h2>
+<p>用类似Markdown语法的方式生成流程图，详见<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2tuc3YvbWVybWFpZA==">mermaid官方文档<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">语法：&#123;% mermaid type %&#125;&#123;% endmermaid %&#125;</span><br><span class="line"></span><br><span class="line">type : mermaid图表类型</span><br></pre></td></tr></table></figure>
+<h3 id="流程图-1">流程图</h3>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid graph LR %&#125;</span><br><span class="line">ST[开始]--&gt;A</span><br><span class="line">A[用户管理]--&gt;B&#123;是否注册&#125;</span><br><span class="line">B--&gt;|是|B1(输入用户名密码)</span><br><span class="line">B--&gt;|否|B2(注册)</span><br><span class="line">B1--&gt;C[登录]</span><br><span class="line">C--&gt;D[完善个人信息]</span><br><span class="line">B2--&gt;E[注册完成]</span><br><span class="line">E--&gt;B</span><br><span class="line">E--&gt;END[结束]</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<pre class="mermaid" style="text-align: center;">
+            graph LR
+            ST[开始]-->A
+A[用户管理]-->B{是否注册}
+B-->|是|B1(输入用户名密码)
+B-->|否|B2(注册)
+B1-->C[登录]
+C-->D[完善个人信息]
+B2-->E[注册完成]
+E-->B
+E-->END[结束]
+          </pre>
+<h3 id="时序图">时序图</h3>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid sequenceDiagram %&#125;</span><br><span class="line">participant A as 客户</span><br><span class="line">participant B as 取款机</span><br><span class="line">participant C as 银行</span><br><span class="line">A-&gt;&gt;B: 请求取款</span><br><span class="line">B-&gt;&gt;C: 取款请求</span><br><span class="line">Note right of C: 处理请求...</span><br><span class="line">C--&gt;&gt;B: 请求结果</span><br><span class="line">B--&gt;&gt;A: 请求结果</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<pre class="mermaid" style="text-align: center;">
+            sequenceDiagram
+            participant A as 客户
+participant B as 取款机
+participant C as 银行
+A->>B: 请求取款
+B->>C: 取款请求
+Note right of C: 处理请求...
+C-->>B: 请求结果
+B-->>A: 请求结果
+          </pre>
+<h3 id="甘特图">甘特图</h3>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">&#123;% mermaid gantt %&#125;</span><br><span class="line">title 项目进度规划表</span><br><span class="line">dateFormat YYYY-MM-DD</span><br><span class="line">section 前期</span><br><span class="line">需求分析:2019-04-11, 8d</span><br><span class="line">section 中期</span><br><span class="line">编码开发:2019-04-19, 15d</span><br><span class="line">section 后期</span><br><span class="line">系统测试:2019-04-26, 15d</span><br><span class="line">&#123;% endmermaid %&#125;</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<pre class="mermaid" style="text-align: center;">
+            gantt
+            title 项目进度规划表
+dateFormat YYYY-MM-DD
+section 前期
+需求分析:2019-04-11, 8d
+section 中期
+编码开发:2019-04-19, 15d
+section 后期
+系统测试:2019-04-26, 15d
+          </pre>
+<h2 id="数学公式">数学公式</h2>
+<p>使用 <code>\tag&#123;&#125;</code> 给公式编号:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$$\begin&#123;equation&#125; \tag&#123;a&#125; \label&#123;eq1&#125;</span><br><span class="line">e=mc^2</span><br><span class="line">\end&#123;equation&#125;$$</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<p><span class="math display">\[\begin{equation} \tag{a} \label{eq1}
+e=mc^2
+\end{equation}\]</span></p>
+<p>使用 <code>\eqref&#123;&#125;</code> 引用公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">质能方程 $\eqref&#123;eq1&#125;$ 是爱因斯坦提出的</span><br></pre></td></tr></table></figure>
+<p>显示效果如下所示：</p>
+<p>质能方程 <span class="math inline">\(\eqref{eq1}\)</span> 是爱因斯坦提出的</p>
+]]></content>
+      <categories>
+        <category>博客教程</category>
+      </categories>
+      <tags>
+        <tag>Tag Plugins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker Compose多容器部署</title>
+    <url>/posts/53410/</url>
+    <content><![CDATA[<blockquote>
+<p>Docker Compose是用于定义和运行多容器Docker应用程序的工具，可以通过YAML文件创建、管理多个容器。</p>
+</blockquote>
+<h2 id="安装">安装</h2>
+<ol type="1">
+<li><p>下载Docker Compose可执行文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改可执行权限 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<span id="more"></span>
+<h2 id="语法介绍">语法介绍</h2>
+<p>一个Services代表一个container，可以从image创建，也可以通过build创建，可以指定volume和network。如下通过docker部署wordpress应用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create -d bridge my-net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -d --name wordpress --network my-net -p 8080:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_PASSWORD=root wordpress</span><br><span class="line">docker run -d --name mysql --network my-net -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>通过Docker Compose部署则只需编写如下文件，执行<code>docker-compose up</code>命令即可：</p>
+<figure class="highlight bash"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      WORDPRESS_DB_PASSWORD: root</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: wordpress</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql-data:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql-data:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  my-net:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="查看版本">查看版本</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose -v</span><br></pre></td></tr></table></figure>
+<h3 id="构建容器">构建容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务">启动服务</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认使用当前目录下的docker-compose.yml</span></span><br><span class="line">docker-compose up</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在后台运行，不打印日志</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定文件启动</span></span><br><span class="line">docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
+<h3 id="查看镜像">查看镜像</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose images</span><br></pre></td></tr></table></figure>
+<h3 id="查看容器">查看容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
+<h3 id="进入容器">进入容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql bash</span><br></pre></td></tr></table></figure>
+<h3 id="停止服务">停止服务</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 停止但不删除容器</span></span><br><span class="line">docker-compose stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器并移除网络</span></span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
+<h3 id="水平扩展">水平扩展</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定服务运行的容器个数，格式：service=num</span></span><br><span class="line">docker-compose up -d --scale wordpress=3</span><br></pre></td></tr></table></figure>
+<div class="note warning">
+            <p>更多内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vY29tcG9zZS8=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
+          </div>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker环境搭建</title>
+    <url>/posts/47824/</url>
+    <content><![CDATA[<h2 id="linux-docker-安装">Linux Docker 安装</h2>
+<ol type="1">
+<li><p>卸载旧版本Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure></li>
+<li><p>安装Dokcer所需的一些系统工具：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<span id="more"></span>
+<ol start="3" type="1">
+<li><p>添加Dokcer软件源（使用阿里云国内镜像源，解决下载慢问题），并更新yum缓存：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure></li>
+<li><p>安装最新版Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure></li>
+<li><p>启动Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure></li>
+<li><p>配置镜像加速器，可解决国内拉取Docker镜像慢问题。打开阿里云<span class="exturl" data-url="aHR0cHM6Ly9jci5jb25zb2xlLmFsaXl1bi5jb20vY24tc2hlbnpoZW4vaW5zdGFuY2VzL21pcnJvcnM=">容器镜像服务-镜像加速器<i class="fa fa-external-link-alt"></i></span>获取你的专属加速地址，替换下方<code>https://xxxxxxxx.mirror.aliyuncs.com</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://xxxxxxxx.mirror.aliyuncs.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+<li><p>运行<code>sudo docker run hello-world</code>，出现如下内容表示安装成功：</p>
+<p><img data-src="https://img.hujinbo.me/blog/20191108222449.png" /></p></li>
+<li><p>运行<code>sudo docker version</code>，可查看当前安装的docker版本：</p>
+<p><img data-src="https://img.hujinbo.me/blog/20191108222254.png" /></p></li>
+</ol>
+<div class="note warning">
+            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vaW5zdGFsbC9saW51eC9kb2NrZXItY2UvY2VudG9zLw==">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
+          </div>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker快速入门</title>
     <url>/posts/2763/</url>
     <content><![CDATA[<blockquote>
@@ -491,130 +536,6 @@ public class HelloWorld &#123;
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker Compose多容器部署</title>
-    <url>/posts/53410/</url>
-    <content><![CDATA[<blockquote>
-<p>Docker Compose是用于定义和运行多容器Docker应用程序的工具，可以通过YAML文件创建、管理多个容器。</p>
-</blockquote>
-<h2 id="安装">安装</h2>
-<ol type="1">
-<li><p>下载Docker Compose可执行文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
-<li><p>修改可执行权限 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
-</ol>
-<span id="more"></span>
-<h2 id="语法介绍">语法介绍</h2>
-<p>一个Services代表一个container，可以从image创建，也可以通过build创建，可以指定volume和network。如下通过docker部署wordpress应用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create -d bridge my-net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -d --name wordpress --network my-net -p 8080:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_PASSWORD=root wordpress</span><br><span class="line">docker run -d --name mysql --network my-net -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress mysql:5.7</span><br></pre></td></tr></table></figure>
-<p>通过Docker Compose部署则只需编写如下文件，执行<code>docker-compose up</code>命令即可：</p>
-<figure class="highlight bash"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      WORDPRESS_DB_PASSWORD: root</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: wordpress</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql-data:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql-data:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  my-net:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure>
-<h2 id="常用命令">常用命令</h2>
-<h3 id="查看版本">查看版本</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose -v</span><br></pre></td></tr></table></figure>
-<h3 id="构建容器">构建容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
-<h3 id="启动服务">启动服务</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认使用当前目录下的docker-compose.yml</span></span><br><span class="line">docker-compose up</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在后台运行，不打印日志</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定文件启动</span></span><br><span class="line">docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
-<h3 id="查看镜像">查看镜像</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose images</span><br></pre></td></tr></table></figure>
-<h3 id="查看容器">查看容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
-<h3 id="进入容器">进入容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql bash</span><br></pre></td></tr></table></figure>
-<h3 id="停止服务">停止服务</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 停止但不删除容器</span></span><br><span class="line">docker-compose stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器并移除网络</span></span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
-<h3 id="水平扩展">水平扩展</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定服务运行的容器个数，格式：service=num</span></span><br><span class="line">docker-compose up -d --scale wordpress=3</span><br></pre></td></tr></table></figure>
-<div class="note warning">
-            <p>更多内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vY29tcG9zZS8=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
-          </div>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git快速入门</title>
-    <url>/posts/3267/</url>
-    <content><![CDATA[<blockquote>
-<p>Git是一个开源的分布式版本控制系统，用于高效快速地处理任何小型或大型的项目。</p>
-</blockquote>
-<h2 id="环境安装">环境安装</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
-<h2 id="初始化配置">初始化配置</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建SSH key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥，复制到github</span></span><br><span class="line">cat id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试连通性</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户信息</span></span><br><span class="line">git config --global user.name <span class="string">&quot;hujinbo&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h2 id="常用命令">常用命令</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化工作区</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交文件到版本库</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地仓库与远程仓库关联（先在github创建仓库）</span></span><br><span class="line">git remote add origin git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看仓库状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 回滚到某次提交</span></span><br><span class="line">git reset --hard 32580c6d77ce7a85f07b9a1ba620a46fa4830f5e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆仓库到本地</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加子模块</span></span><br><span class="line">git submodule add git@github.com:hujinbo/hexo-theme-next.git themes/next</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归克隆（包含子模块）</span></span><br><span class="line">git <span class="built_in">clone</span> --recursive git@github.com:hujinbo/hujinbo.github.io.git</span><br></pre></td></tr></table></figure>
-<h2 id="标签管理">标签管理</h2>
-<p>用于标记发布的版本，可以迅速回滚到某个标签状态</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有标签</span></span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建标签</span></span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定提交信息</span></span><br><span class="line">git tag -a v1.0.0 -m <span class="string">&quot;v1版本&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签发布</span></span><br><span class="line">git push origin v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除标签</span></span><br><span class="line">git tag -d v1.0.0</span><br><span class="line">git push origin :refs/tags/v1.0.0</span><br></pre></td></tr></table></figure>
-<h2 id="分支管理">分支管理</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分支</span></span><br><span class="line">git branch feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">git checkout feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并分支（将feature_1合并到master，需先切换到master）</span></span><br><span class="line">git merge feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有分支操作记录</span></span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-<h2 id="最佳实践">最佳实践</h2>
-<p>master分支存储正式发布的历史 develop分支作为功能收集的分支 feature分支作为功能分支，每个新功能都有一个自己的分支，使用develop分支作为父分支，当功能完成时，合并回develop release分支使用develop分支作为父分支，只应该做bug修复、文档生成和其他面向发布的任务。当bug修复完且稳定，应合并到develop和master并分配一个版本号并打上标签 hotfix分支，唯一可以从master分支fork出来的分支，修复完成应马上合并回master分支和develop分支，master分支应用新的版本号打tag</p>
-<p><img data-src="https://img.hujinbo.me/blog/20200109003136.png" /></p>
-<p>建议开发feature，经常从develop同步过来</p>
-<ol type="1">
-<li>提交前diff自己提交的代码，避免提交无用的文件。</li>
-<li>提交代码注释规范，</li>
-<li>使用独立分支开发，</li>
-<li>搞清冲突原因，不要随意丢弃别人的代码</li>
-<li>产品发布后，记得打tag，方便将来拉分支修bug</li>
-<li>版本号规范，稳定版发布前v0.1，v0.2 第一个稳定的版本v1.0</li>
-</ol>
-<h2 id="可视化工具">可视化工具</h2>
-<p>SourceTree</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spark在Docker环境下中文乱码问题</title>
-    <url>/posts/56475/</url>
-    <content><![CDATA[<blockquote>
-<p>具体表现为：日志的中文字符变为<code>???</code>符号，启动Spark History Server时报错：java.nio.charset.MalformedInputException: Input length = 1</p>
-</blockquote>
-<h2 id="解决方式">解决方式</h2>
-<p>添加环境变量<code>LC_ALL=en_US.UTF-8</code>，如下示例为k8s的yaml配置方式： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">spark</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;swr.cn-north-1.myhuaweicloud.com/nascent/spark-quantbi:spark_3.0_0914_3&quot;</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">TZ</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">LC_ALL</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">en_US.UTF-8</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="问题描述">问题描述</h2>
-<p>公司有两套Spark环境，一套使用本地部署，一套使用Docker部署，在日常使用中，通常包含很多中文字段的日志打印。<br />
-在本地部署的环境中文日志显示正常，而一但通过Docker打包发布后，就出现中文乱码了。<br />
-在开启Spark History Server后，包含中文的Application更是直接报错，影响正常使用。 <span id="more"></span> 1. 使用Spark UI查看日志，发现中文全部乱码，变为<code>?</code>符号： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:14:35.849 CST main WARN org.apache.spark.sql.execution.datasources.jdbc.JdbcUtils: Create Table Sql: [CREATE TABLE snappy_2fb345e26060499e8ec47b4f9d96d1fe (`??` bigint , `??` integer , `????` datetime , `????` datetime )]</span><br></pre></td></tr></table></figure></p>
-<ol start="2" type="1">
-<li>开启Spark History Server后，只要ETL包含中文，解析就会报错： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:57:19.450 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095627-0016</span><br><span class="line">20/09/15 09:57:21.388 CST log-replay-executor-3 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095627-0016 for listing data...</span><br><span class="line">20/09/15 09:57:21.392 CST log-replay-executor-3 ERROR org.apache.spark.deploy.history.FsHistoryProvider: Exception while merging application listings</span><br><span class="line">java.nio.charset.MalformedInputException: Input length = 1</span><br><span class="line">    at java.nio.charset.CoderResult.throwException(CoderResult.java:281)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)</span><br><span class="line">    at java.io.InputStreamReader.read(InputStreamReader.java:184)</span><br><span class="line">    at java.io.BufferedReader.fill(BufferedReader.java:161)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:324)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:389)</span><br><span class="line">    at scala.io.BufferedSource$BufferedLineIterator.hasNext(BufferedSource.scala:74)</span><br><span class="line">    at scala.collection.Iterator$$anon$20.hasNext(Iterator.scala:884)</span><br><span class="line">    at scala.collection.Iterator$$anon$12.hasNext(Iterator.scala:511)</span><br><span class="line">    at org.apache.spark.scheduler.ReplayListenerBus.replay(ReplayListenerBus.scala:82)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4(FsHistoryProvider.scala:777)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4$adapted(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.util.Utils$.tryWithResource(Utils.scala:2539)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.doMergeApplicationListing(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.mergeApplicationListing(FsHistoryProvider.scala:675)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$checkForLogs$13(FsHistoryProvider.scala:545)</span><br><span class="line">    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:748)</span><br></pre></td></tr></table></figure> 不包含中文则可以正常解析： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:58:33.352 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095822-0017</span><br><span class="line">20/09/15 09:58:41.403 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017 for listing data...</span><br><span class="line">20/09/15 09:58:41.407 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Finished parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="排查过程">排查过程</h2>
-<ol type="1">
-<li><p>根据错误堆栈，找到读取日志文件的代码： <img data-src="https://img.hujinbo.me/blog/sCC78J.png" /></p></li>
-<li><p>查看<code>Source.fromInputStream</code>源码，可以看到默认使用<code>Codec.default</code>的编码： <img data-src="https://img.hujinbo.me/blog/JATmVQ.png" /></p></li>
-<li><p>查看<code>Codec.default</code>源码，可以看到默认使用的是<code>Charset.defaultCharset</code>的编码： <img data-src="https://img.hujinbo.me/blog/zL1c8w.png" /></p></li>
-<li><p>而<code>Charset.defaultCharset</code>读取的是<code>file.encoding</code>的值： <img data-src="https://img.hujinbo.me/blog/oXiqJh.png" /></p></li>
-<li><p>关闭Spark History Server日志压缩，下载日志文件，发现文件编码为<code>UTF-8</code>且中文写入正常，故日志写入方面没有问题： <img data-src="https://img.hujinbo.me/blog/rZjyfq.png" /></p></li>
-<li><p>通过Spark UI查看Spark系统环境变量，发现编码为<code>ANSI_X3.4-1968</code>，可能是使用该编码读取文件时引发报错: <img data-src="https://img.hujinbo.me/blog/344l9I.png" /></p></li>
-<li><p>为验证上述猜想，编写测试用例，使用<code>Source</code>读取日志文件，并指定编码为<code>ANSI_X3.4-1968</code>，可以复现Spark History Server的报错： <img data-src="https://img.hujinbo.me/blog/H4PEMv.png" /></p></li>
-<li><p>而指定编码为<code>UTF-8</code>时，文件读取正常。所以，只需让读取到的<code>file.encoding</code>为<code>UTF-8</code>即可解决乱码和报错的问题。 <img data-src="https://img.hujinbo.me/blog/Al1A1v.png" /></p></li>
-<li><p>而日志打印中文乱码问题，是因为磁盘只能存储二进制文件，故Java程序在写文件时会调用<code>String.getByte</code>方法将对象转为byte，然后再写入磁盘。 查看相关源码，发现它使用的编码也是上面提到的<code>Charset.defaultCharset</code>系统默认编码。 <img data-src="https://img.hujinbo.me/blog/xmTpZV.png" /></p></li>
-<li><p>所以上述2个问题，都是由于Docker环境下未指定系统默认字符集为<code>UTF-8</code>，导致读取<code>file.encoding</code>为<code>ANSI_X3.4-1968</code>所引发的。</p></li>
-</ol>
-<h2 id="注意事项">注意事项</h2>
-<p>在排查过程中，进入容器后，使用<code>locale</code>命令或启动<code>spark-shell</code>执行<code>println(Charset.defaultCharset)</code>检查编码均正常，故不能使用这2种方法判断。<br />
-除了上述Spark UI查看<code>file.encoding</code>的方式，也可以使用Arthas诊断工具的<code>sysprop</code>命令进行查看当前JVM的<code>file.encoding</code>属性。 <img data-src="https://img.hujinbo.me/blog/IHFjQC.png" /></p>
-]]></content>
-      <categories>
-        <category>Spark</category>
-      </categories>
-      <tags>
-        <tag>Spark</tag>
       </tags>
   </entry>
   <entry>
@@ -887,6 +808,85 @@ public class HelloWorld &#123;
       </categories>
       <tags>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git快速入门</title>
+    <url>/posts/3267/</url>
+    <content><![CDATA[<blockquote>
+<p>Git是一个开源的分布式版本控制系统，用于高效快速地处理任何小型或大型的项目。</p>
+</blockquote>
+<h2 id="环境安装">环境安装</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
+<h2 id="初始化配置">初始化配置</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建SSH key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥，复制到github</span></span><br><span class="line">cat id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试连通性</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户信息</span></span><br><span class="line">git config --global user.name <span class="string">&quot;hujinbo&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="常用命令">常用命令</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化工作区</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交文件到版本库</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地仓库与远程仓库关联（先在github创建仓库）</span></span><br><span class="line">git remote add origin git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看仓库状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 回滚到某次提交</span></span><br><span class="line">git reset --hard 32580c6d77ce7a85f07b9a1ba620a46fa4830f5e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆仓库到本地</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加子模块</span></span><br><span class="line">git submodule add git@github.com:hujinbo/hexo-theme-next.git themes/next</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归克隆（包含子模块）</span></span><br><span class="line">git <span class="built_in">clone</span> --recursive git@github.com:hujinbo/hujinbo.github.io.git</span><br></pre></td></tr></table></figure>
+<h2 id="标签管理">标签管理</h2>
+<p>用于标记发布的版本，可以迅速回滚到某个标签状态</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有标签</span></span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建标签</span></span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定提交信息</span></span><br><span class="line">git tag -a v1.0.0 -m <span class="string">&quot;v1版本&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签发布</span></span><br><span class="line">git push origin v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除标签</span></span><br><span class="line">git tag -d v1.0.0</span><br><span class="line">git push origin :refs/tags/v1.0.0</span><br></pre></td></tr></table></figure>
+<h2 id="分支管理">分支管理</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分支</span></span><br><span class="line">git branch feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">git checkout feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并分支（将feature_1合并到master，需先切换到master）</span></span><br><span class="line">git merge feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有分支操作记录</span></span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="最佳实践">最佳实践</h2>
+<p>master分支存储正式发布的历史 develop分支作为功能收集的分支 feature分支作为功能分支，每个新功能都有一个自己的分支，使用develop分支作为父分支，当功能完成时，合并回develop release分支使用develop分支作为父分支，只应该做bug修复、文档生成和其他面向发布的任务。当bug修复完且稳定，应合并到develop和master并分配一个版本号并打上标签 hotfix分支，唯一可以从master分支fork出来的分支，修复完成应马上合并回master分支和develop分支，master分支应用新的版本号打tag</p>
+<p><img data-src="https://img.hujinbo.me/blog/20200109003136.png" /></p>
+<p>建议开发feature，经常从develop同步过来</p>
+<ol type="1">
+<li>提交前diff自己提交的代码，避免提交无用的文件。</li>
+<li>提交代码注释规范，</li>
+<li>使用独立分支开发，</li>
+<li>搞清冲突原因，不要随意丢弃别人的代码</li>
+<li>产品发布后，记得打tag，方便将来拉分支修bug</li>
+<li>版本号规范，稳定版发布前v0.1，v0.2 第一个稳定的版本v1.0</li>
+</ol>
+<h2 id="可视化工具">可视化工具</h2>
+<p>SourceTree</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spark在Docker环境下中文乱码问题</title>
+    <url>/posts/56475/</url>
+    <content><![CDATA[<blockquote>
+<p>具体表现为：日志的中文字符变为<code>???</code>符号，启动Spark History Server时报错：java.nio.charset.MalformedInputException: Input length = 1</p>
+</blockquote>
+<h2 id="解决方式">解决方式</h2>
+<p>添加环境变量<code>LC_ALL=en_US.UTF-8</code>，如下示例为k8s的yaml配置方式： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">spark</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;swr.cn-north-1.myhuaweicloud.com/nascent/spark-quantbi:spark_3.0_0914_3&quot;</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">TZ</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">LC_ALL</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">en_US.UTF-8</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="问题描述">问题描述</h2>
+<p>公司有两套Spark环境，一套使用本地部署，一套使用Docker部署，在日常使用中，通常包含很多中文字段的日志打印。<br />
+在本地部署的环境中文日志显示正常，而一但通过Docker打包发布后，就出现中文乱码了。<br />
+在开启Spark History Server后，包含中文的Application更是直接报错，影响正常使用。 <span id="more"></span> 1. 使用Spark UI查看日志，发现中文全部乱码，变为<code>?</code>符号： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:14:35.849 CST main WARN org.apache.spark.sql.execution.datasources.jdbc.JdbcUtils: Create Table Sql: [CREATE TABLE snappy_2fb345e26060499e8ec47b4f9d96d1fe (`??` bigint , `??` integer , `????` datetime , `????` datetime )]</span><br></pre></td></tr></table></figure></p>
+<ol start="2" type="1">
+<li>开启Spark History Server后，只要ETL包含中文，解析就会报错： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:57:19.450 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095627-0016</span><br><span class="line">20/09/15 09:57:21.388 CST log-replay-executor-3 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095627-0016 for listing data...</span><br><span class="line">20/09/15 09:57:21.392 CST log-replay-executor-3 ERROR org.apache.spark.deploy.history.FsHistoryProvider: Exception while merging application listings</span><br><span class="line">java.nio.charset.MalformedInputException: Input length = 1</span><br><span class="line">    at java.nio.charset.CoderResult.throwException(CoderResult.java:281)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)</span><br><span class="line">    at java.io.InputStreamReader.read(InputStreamReader.java:184)</span><br><span class="line">    at java.io.BufferedReader.fill(BufferedReader.java:161)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:324)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:389)</span><br><span class="line">    at scala.io.BufferedSource$BufferedLineIterator.hasNext(BufferedSource.scala:74)</span><br><span class="line">    at scala.collection.Iterator$$anon$20.hasNext(Iterator.scala:884)</span><br><span class="line">    at scala.collection.Iterator$$anon$12.hasNext(Iterator.scala:511)</span><br><span class="line">    at org.apache.spark.scheduler.ReplayListenerBus.replay(ReplayListenerBus.scala:82)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4(FsHistoryProvider.scala:777)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4$adapted(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.util.Utils$.tryWithResource(Utils.scala:2539)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.doMergeApplicationListing(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.mergeApplicationListing(FsHistoryProvider.scala:675)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$checkForLogs$13(FsHistoryProvider.scala:545)</span><br><span class="line">    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:748)</span><br></pre></td></tr></table></figure> 不包含中文则可以正常解析： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:58:33.352 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095822-0017</span><br><span class="line">20/09/15 09:58:41.403 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017 for listing data...</span><br><span class="line">20/09/15 09:58:41.407 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Finished parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="排查过程">排查过程</h2>
+<ol type="1">
+<li><p>根据错误堆栈，找到读取日志文件的代码： <img data-src="https://img.hujinbo.me/blog/sCC78J.png" /></p></li>
+<li><p>查看<code>Source.fromInputStream</code>源码，可以看到默认使用<code>Codec.default</code>的编码： <img data-src="https://img.hujinbo.me/blog/JATmVQ.png" /></p></li>
+<li><p>查看<code>Codec.default</code>源码，可以看到默认使用的是<code>Charset.defaultCharset</code>的编码： <img data-src="https://img.hujinbo.me/blog/zL1c8w.png" /></p></li>
+<li><p>而<code>Charset.defaultCharset</code>读取的是<code>file.encoding</code>的值： <img data-src="https://img.hujinbo.me/blog/oXiqJh.png" /></p></li>
+<li><p>关闭Spark History Server日志压缩，下载日志文件，发现文件编码为<code>UTF-8</code>且中文写入正常，故日志写入方面没有问题： <img data-src="https://img.hujinbo.me/blog/rZjyfq.png" /></p></li>
+<li><p>通过Spark UI查看Spark系统环境变量，发现编码为<code>ANSI_X3.4-1968</code>，可能是使用该编码读取文件时引发报错: <img data-src="https://img.hujinbo.me/blog/344l9I.png" /></p></li>
+<li><p>为验证上述猜想，编写测试用例，使用<code>Source</code>读取日志文件，并指定编码为<code>ANSI_X3.4-1968</code>，可以复现Spark History Server的报错： <img data-src="https://img.hujinbo.me/blog/H4PEMv.png" /></p></li>
+<li><p>而指定编码为<code>UTF-8</code>时，文件读取正常。所以，只需让读取到的<code>file.encoding</code>为<code>UTF-8</code>即可解决乱码和报错的问题。 <img data-src="https://img.hujinbo.me/blog/Al1A1v.png" /></p></li>
+<li><p>而日志打印中文乱码问题，是因为磁盘只能存储二进制文件，故Java程序在写文件时会调用<code>String.getByte</code>方法将对象转为byte，然后再写入磁盘。 查看相关源码，发现它使用的编码也是上面提到的<code>Charset.defaultCharset</code>系统默认编码。 <img data-src="https://img.hujinbo.me/blog/xmTpZV.png" /></p></li>
+<li><p>所以上述2个问题，都是由于Docker环境下未指定系统默认字符集为<code>UTF-8</code>，导致读取<code>file.encoding</code>为<code>ANSI_X3.4-1968</code>所引发的。</p></li>
+</ol>
+<h2 id="注意事项">注意事项</h2>
+<p>在排查过程中，进入容器后，使用<code>locale</code>命令或启动<code>spark-shell</code>执行<code>println(Charset.defaultCharset)</code>检查编码均正常，故不能使用这2种方法判断。<br />
+除了上述Spark UI查看<code>file.encoding</code>的方式，也可以使用Arthas诊断工具的<code>sysprop</code>命令进行查看当前JVM的<code>file.encoding</code>属性。 <img data-src="https://img.hujinbo.me/blog/IHFjQC.png" /></p>
+]]></content>
+      <categories>
+        <category>Spark</category>
+      </categories>
+      <tags>
+        <tag>Spark</tag>
       </tags>
   </entry>
   <entry>
