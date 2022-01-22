@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SpringBoot快速入门</title>
+    <url>/posts/2197/</url>
+    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
+<ol type="1">
+<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><span id="more"></span></p></li>
+<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
+<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
+<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
+<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
+<li><p>删除没用的文件</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
+</ol>
+<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo标签插件常用语法介绍</title>
     <url>/posts/32268/</url>
     <content><![CDATA[<blockquote>
@@ -113,6 +140,42 @@ e=mc^2
       </categories>
       <tags>
         <tag>Tag Plugins</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker环境搭建</title>
+    <url>/posts/47824/</url>
+    <content><![CDATA[<h2 id="linux-docker-安装">Linux Docker 安装</h2>
+<ol type="1">
+<li><p>卸载旧版本Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure></li>
+<li><p>安装Dokcer所需的一些系统工具：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></li>
+</ol>
+<span id="more"></span>
+<ol start="3" type="1">
+<li><p>添加Dokcer软件源（使用阿里云国内镜像源，解决下载慢问题），并更新yum缓存：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure></li>
+<li><p>安装最新版Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure></li>
+<li><p>启动Docker：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure></li>
+<li><p>配置镜像加速器，可解决国内拉取Docker镜像慢问题。打开阿里云<span class="exturl" data-url="aHR0cHM6Ly9jci5jb25zb2xlLmFsaXl1bi5jb20vY24tc2hlbnpoZW4vaW5zdGFuY2VzL21pcnJvcnM=">容器镜像服务-镜像加速器<i class="fa fa-external-link-alt"></i></span>获取你的专属加速地址，替换下方<code>https://xxxxxxxx.mirror.aliyuncs.com</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://xxxxxxxx.mirror.aliyuncs.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+<li><p>运行<code>sudo docker run hello-world</code>，出现如下内容表示安装成功：</p>
+<p><img data-src="https://img.hujinbo.me/blog/20191108222449.png" /></p></li>
+<li><p>运行<code>sudo docker version</code>，可查看当前安装的docker版本：</p>
+<p><img data-src="https://img.hujinbo.me/blog/20191108222254.png" /></p></li>
+</ol>
+<div class="note warning">
+            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vaW5zdGFsbC9saW51eC9kb2NrZXItY2UvY2VudG9zLw==">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
+          </div>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -324,69 +387,6 @@ public class HelloWorld &#123;
       </tags>
   </entry>
   <entry>
-    <title>SpringBoot快速入门</title>
-    <url>/posts/2197/</url>
-    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
-<ol type="1">
-<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><span id="more"></span></p></li>
-<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
-<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
-<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
-<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
-<li><p>删除没用的文件</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
-</ol>
-<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
-]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker环境搭建</title>
-    <url>/posts/47824/</url>
-    <content><![CDATA[<h2 id="linux-docker-安装">Linux Docker 安装</h2>
-<ol type="1">
-<li><p>卸载旧版本Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure></li>
-<li><p>安装Dokcer所需的一些系统工具：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure></li>
-</ol>
-<span id="more"></span>
-<ol start="3" type="1">
-<li><p>添加Dokcer软件源（使用阿里云国内镜像源，解决下载慢问题），并更新yum缓存：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sudo yum makecache fast</span><br></pre></td></tr></table></figure></li>
-<li><p>安装最新版Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure></li>
-<li><p>启动Docker：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure></li>
-<li><p>配置镜像加速器，可解决国内拉取Docker镜像慢问题。打开阿里云<span class="exturl" data-url="aHR0cHM6Ly9jci5jb25zb2xlLmFsaXl1bi5jb20vY24tc2hlbnpoZW4vaW5zdGFuY2VzL21pcnJvcnM=">容器镜像服务-镜像加速器<i class="fa fa-external-link-alt"></i></span>获取你的专属加速地址，替换下方<code>https://xxxxxxxx.mirror.aliyuncs.com</code>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://xxxxxxxx.mirror.aliyuncs.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
-<li><p>运行<code>sudo docker run hello-world</code>，出现如下内容表示安装成功：</p>
-<p><img data-src="https://img.hujinbo.me/blog/20191108222449.png" /></p></li>
-<li><p>运行<code>sudo docker version</code>，可查看当前安装的docker版本：</p>
-<p><img data-src="https://img.hujinbo.me/blog/20191108222254.png" /></p></li>
-</ol>
-<div class="note warning">
-            <p>注：更多详细内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vaW5zdGFsbC9saW51eC9kb2NrZXItY2UvY2VudG9zLw==">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
-          </div>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker快速入门</title>
     <url>/posts/2763/</url>
     <content><![CDATA[<blockquote>
@@ -536,6 +536,85 @@ public class HelloWorld &#123;
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git快速入门</title>
+    <url>/posts/3267/</url>
+    <content><![CDATA[<blockquote>
+<p>Git是一个开源的分布式版本控制系统，用于高效快速地处理任何小型或大型的项目。</p>
+</blockquote>
+<h2 id="环境安装">环境安装</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
+<h2 id="初始化配置">初始化配置</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建SSH key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥，复制到github</span></span><br><span class="line">cat id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试连通性</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户信息</span></span><br><span class="line">git config --global user.name <span class="string">&quot;hujinbo&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="常用命令">常用命令</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化工作区</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交文件到版本库</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地仓库与远程仓库关联（先在github创建仓库）</span></span><br><span class="line">git remote add origin git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看仓库状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 回滚到某次提交</span></span><br><span class="line">git reset --hard 32580c6d77ce7a85f07b9a1ba620a46fa4830f5e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆仓库到本地</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加子模块</span></span><br><span class="line">git submodule add git@github.com:hujinbo/hexo-theme-next.git themes/next</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归克隆（包含子模块）</span></span><br><span class="line">git <span class="built_in">clone</span> --recursive git@github.com:hujinbo/hujinbo.github.io.git</span><br></pre></td></tr></table></figure>
+<h2 id="标签管理">标签管理</h2>
+<p>用于标记发布的版本，可以迅速回滚到某个标签状态</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有标签</span></span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建标签</span></span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定提交信息</span></span><br><span class="line">git tag -a v1.0.0 -m <span class="string">&quot;v1版本&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签发布</span></span><br><span class="line">git push origin v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除标签</span></span><br><span class="line">git tag -d v1.0.0</span><br><span class="line">git push origin :refs/tags/v1.0.0</span><br></pre></td></tr></table></figure>
+<h2 id="分支管理">分支管理</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分支</span></span><br><span class="line">git branch feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">git checkout feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并分支（将feature_1合并到master，需先切换到master）</span></span><br><span class="line">git merge feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有分支操作记录</span></span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="最佳实践">最佳实践</h2>
+<p>master分支存储正式发布的历史 develop分支作为功能收集的分支 feature分支作为功能分支，每个新功能都有一个自己的分支，使用develop分支作为父分支，当功能完成时，合并回develop release分支使用develop分支作为父分支，只应该做bug修复、文档生成和其他面向发布的任务。当bug修复完且稳定，应合并到develop和master并分配一个版本号并打上标签 hotfix分支，唯一可以从master分支fork出来的分支，修复完成应马上合并回master分支和develop分支，master分支应用新的版本号打tag</p>
+<p><img data-src="https://img.hujinbo.me/blog/20200109003136.png" /></p>
+<p>建议开发feature，经常从develop同步过来</p>
+<ol type="1">
+<li>提交前diff自己提交的代码，避免提交无用的文件。</li>
+<li>提交代码注释规范，</li>
+<li>使用独立分支开发，</li>
+<li>搞清冲突原因，不要随意丢弃别人的代码</li>
+<li>产品发布后，记得打tag，方便将来拉分支修bug</li>
+<li>版本号规范，稳定版发布前v0.1，v0.2 第一个稳定的版本v1.0</li>
+</ol>
+<h2 id="可视化工具">可视化工具</h2>
+<p>SourceTree</p>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spark在Docker环境下中文乱码问题</title>
+    <url>/posts/56475/</url>
+    <content><![CDATA[<blockquote>
+<p>具体表现为：日志的中文字符变为<code>???</code>符号，启动Spark History Server时报错：java.nio.charset.MalformedInputException: Input length = 1</p>
+</blockquote>
+<h2 id="解决方式">解决方式</h2>
+<p>添加环境变量<code>LC_ALL=en_US.UTF-8</code>，如下示例为k8s的yaml配置方式： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">spark</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;swr.cn-north-1.myhuaweicloud.com/nascent/spark-quantbi:spark_3.0_0914_3&quot;</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">TZ</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">LC_ALL</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">en_US.UTF-8</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="问题描述">问题描述</h2>
+<p>公司有两套Spark环境，一套使用本地部署，一套使用Docker部署，在日常使用中，通常包含很多中文字段的日志打印。<br />
+在本地部署的环境中文日志显示正常，而一但通过Docker打包发布后，就出现中文乱码了。<br />
+在开启Spark History Server后，包含中文的Application更是直接报错，影响正常使用。 <span id="more"></span> 1. 使用Spark UI查看日志，发现中文全部乱码，变为<code>?</code>符号： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:14:35.849 CST main WARN org.apache.spark.sql.execution.datasources.jdbc.JdbcUtils: Create Table Sql: [CREATE TABLE snappy_2fb345e26060499e8ec47b4f9d96d1fe (`??` bigint , `??` integer , `????` datetime , `????` datetime )]</span><br></pre></td></tr></table></figure></p>
+<ol start="2" type="1">
+<li>开启Spark History Server后，只要ETL包含中文，解析就会报错： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:57:19.450 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095627-0016</span><br><span class="line">20/09/15 09:57:21.388 CST log-replay-executor-3 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095627-0016 for listing data...</span><br><span class="line">20/09/15 09:57:21.392 CST log-replay-executor-3 ERROR org.apache.spark.deploy.history.FsHistoryProvider: Exception while merging application listings</span><br><span class="line">java.nio.charset.MalformedInputException: Input length = 1</span><br><span class="line">    at java.nio.charset.CoderResult.throwException(CoderResult.java:281)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)</span><br><span class="line">    at java.io.InputStreamReader.read(InputStreamReader.java:184)</span><br><span class="line">    at java.io.BufferedReader.fill(BufferedReader.java:161)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:324)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:389)</span><br><span class="line">    at scala.io.BufferedSource$BufferedLineIterator.hasNext(BufferedSource.scala:74)</span><br><span class="line">    at scala.collection.Iterator$$anon$20.hasNext(Iterator.scala:884)</span><br><span class="line">    at scala.collection.Iterator$$anon$12.hasNext(Iterator.scala:511)</span><br><span class="line">    at org.apache.spark.scheduler.ReplayListenerBus.replay(ReplayListenerBus.scala:82)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4(FsHistoryProvider.scala:777)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4$adapted(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.util.Utils$.tryWithResource(Utils.scala:2539)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.doMergeApplicationListing(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.mergeApplicationListing(FsHistoryProvider.scala:675)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$checkForLogs$13(FsHistoryProvider.scala:545)</span><br><span class="line">    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:748)</span><br></pre></td></tr></table></figure> 不包含中文则可以正常解析： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:58:33.352 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095822-0017</span><br><span class="line">20/09/15 09:58:41.403 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017 for listing data...</span><br><span class="line">20/09/15 09:58:41.407 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Finished parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="排查过程">排查过程</h2>
+<ol type="1">
+<li><p>根据错误堆栈，找到读取日志文件的代码： <img data-src="https://img.hujinbo.me/blog/sCC78J.png" /></p></li>
+<li><p>查看<code>Source.fromInputStream</code>源码，可以看到默认使用<code>Codec.default</code>的编码： <img data-src="https://img.hujinbo.me/blog/JATmVQ.png" /></p></li>
+<li><p>查看<code>Codec.default</code>源码，可以看到默认使用的是<code>Charset.defaultCharset</code>的编码： <img data-src="https://img.hujinbo.me/blog/zL1c8w.png" /></p></li>
+<li><p>而<code>Charset.defaultCharset</code>读取的是<code>file.encoding</code>的值： <img data-src="https://img.hujinbo.me/blog/oXiqJh.png" /></p></li>
+<li><p>关闭Spark History Server日志压缩，下载日志文件，发现文件编码为<code>UTF-8</code>且中文写入正常，故日志写入方面没有问题： <img data-src="https://img.hujinbo.me/blog/rZjyfq.png" /></p></li>
+<li><p>通过Spark UI查看Spark系统环境变量，发现编码为<code>ANSI_X3.4-1968</code>，可能是使用该编码读取文件时引发报错: <img data-src="https://img.hujinbo.me/blog/344l9I.png" /></p></li>
+<li><p>为验证上述猜想，编写测试用例，使用<code>Source</code>读取日志文件，并指定编码为<code>ANSI_X3.4-1968</code>，可以复现Spark History Server的报错： <img data-src="https://img.hujinbo.me/blog/H4PEMv.png" /></p></li>
+<li><p>而指定编码为<code>UTF-8</code>时，文件读取正常。所以，只需让读取到的<code>file.encoding</code>为<code>UTF-8</code>即可解决乱码和报错的问题。 <img data-src="https://img.hujinbo.me/blog/Al1A1v.png" /></p></li>
+<li><p>而日志打印中文乱码问题，是因为磁盘只能存储二进制文件，故Java程序在写文件时会调用<code>String.getByte</code>方法将对象转为byte，然后再写入磁盘。 查看相关源码，发现它使用的编码也是上面提到的<code>Charset.defaultCharset</code>系统默认编码。 <img data-src="https://img.hujinbo.me/blog/xmTpZV.png" /></p></li>
+<li><p>所以上述2个问题，都是由于Docker环境下未指定系统默认字符集为<code>UTF-8</code>，导致读取<code>file.encoding</code>为<code>ANSI_X3.4-1968</code>所引发的。</p></li>
+</ol>
+<h2 id="注意事项">注意事项</h2>
+<p>在排查过程中，进入容器后，使用<code>locale</code>命令或启动<code>spark-shell</code>执行<code>println(Charset.defaultCharset)</code>检查编码均正常，故不能使用这2种方法判断。<br />
+除了上述Spark UI查看<code>file.encoding</code>的方式，也可以使用Arthas诊断工具的<code>sysprop</code>命令进行查看当前JVM的<code>file.encoding</code>属性。 <img data-src="https://img.hujinbo.me/blog/IHFjQC.png" /></p>
+]]></content>
+      <categories>
+        <category>Spark</category>
+      </categories>
+      <tags>
+        <tag>Spark</tag>
       </tags>
   </entry>
   <entry>
@@ -811,46 +890,6 @@ public class HelloWorld &#123;
       </tags>
   </entry>
   <entry>
-    <title>Git快速入门</title>
-    <url>/posts/3267/</url>
-    <content><![CDATA[<blockquote>
-<p>Git是一个开源的分布式版本控制系统，用于高效快速地处理任何小型或大型的项目。</p>
-</blockquote>
-<h2 id="环境安装">环境安装</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y git</span><br></pre></td></tr></table></figure>
-<h2 id="初始化配置">初始化配置</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建SSH key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看公钥，复制到github</span></span><br><span class="line">cat id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试连通性</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置用户信息</span></span><br><span class="line">git config --global user.name <span class="string">&quot;hujinbo&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;hujinbo1995@126.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看配置列表</span></span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h2 id="常用命令">常用命令</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化工作区</span></span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加文件到暂存区</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交文件到版本库</span></span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把本地仓库与远程仓库关联（先在github创建仓库）</span></span><br><span class="line">git remote add origin git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库</span></span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看仓库状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 回滚到某次提交</span></span><br><span class="line">git reset --hard 32580c6d77ce7a85f07b9a1ba620a46fa4830f5e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆仓库到本地</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:hujinbo/test.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加子模块</span></span><br><span class="line">git submodule add git@github.com:hujinbo/hexo-theme-next.git themes/next</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归克隆（包含子模块）</span></span><br><span class="line">git <span class="built_in">clone</span> --recursive git@github.com:hujinbo/hujinbo.github.io.git</span><br></pre></td></tr></table></figure>
-<h2 id="标签管理">标签管理</h2>
-<p>用于标记发布的版本，可以迅速回滚到某个标签状态</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看所有标签</span></span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建标签</span></span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定提交信息</span></span><br><span class="line">git tag -a v1.0.0 -m <span class="string">&quot;v1版本&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签发布</span></span><br><span class="line">git push origin v1.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除标签</span></span><br><span class="line">git tag -d v1.0.0</span><br><span class="line">git push origin :refs/tags/v1.0.0</span><br></pre></td></tr></table></figure>
-<h2 id="分支管理">分支管理</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建分支</span></span><br><span class="line">git branch feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看分支</span></span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换分支</span></span><br><span class="line">git checkout feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并分支（将feature_1合并到master，需先切换到master）</span></span><br><span class="line">git merge feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除分支</span></span><br><span class="line">git branch -d feature_1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有分支操作记录</span></span><br><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-<h2 id="最佳实践">最佳实践</h2>
-<p>master分支存储正式发布的历史 develop分支作为功能收集的分支 feature分支作为功能分支，每个新功能都有一个自己的分支，使用develop分支作为父分支，当功能完成时，合并回develop release分支使用develop分支作为父分支，只应该做bug修复、文档生成和其他面向发布的任务。当bug修复完且稳定，应合并到develop和master并分配一个版本号并打上标签 hotfix分支，唯一可以从master分支fork出来的分支，修复完成应马上合并回master分支和develop分支，master分支应用新的版本号打tag</p>
-<p><img data-src="https://img.hujinbo.me/blog/20200109003136.png" /></p>
-<p>建议开发feature，经常从develop同步过来</p>
-<ol type="1">
-<li>提交前diff自己提交的代码，避免提交无用的文件。</li>
-<li>提交代码注释规范，</li>
-<li>使用独立分支开发，</li>
-<li>搞清冲突原因，不要随意丢弃别人的代码</li>
-<li>产品发布后，记得打tag，方便将来拉分支修bug</li>
-<li>版本号规范，稳定版发布前v0.1，v0.2 第一个稳定的版本v1.0</li>
-</ol>
-<h2 id="可视化工具">可视化工具</h2>
-<p>SourceTree</p>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>安卓逆向分析之抓包、拆包、打包、签名</title>
     <url>/posts/56548/</url>
     <content><![CDATA[<blockquote>
@@ -911,45 +950,6 @@ Tools-Options-Connections <img data-src="https://img.hujinbo.me/blog/QW8jib.png"
       </categories>
       <tags>
         <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spark在Docker环境下中文乱码问题</title>
-    <url>/posts/56475/</url>
-    <content><![CDATA[<blockquote>
-<p>具体表现为：日志的中文字符变为<code>???</code>符号，启动Spark History Server时报错：java.nio.charset.MalformedInputException: Input length = 1</p>
-</blockquote>
-<h2 id="解决方式">解决方式</h2>
-<p>添加环境变量<code>LC_ALL=en_US.UTF-8</code>，如下示例为k8s的yaml配置方式： <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">spark</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&quot;swr.cn-north-1.myhuaweicloud.com/nascent/spark-quantbi:spark_3.0_0914_3&quot;</span></span><br><span class="line">    <span class="attr">imagePullPolicy:</span> <span class="string">IfNotPresent</span></span><br><span class="line">    <span class="attr">env:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">TZ</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">LC_ALL</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">en_US.UTF-8</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="问题描述">问题描述</h2>
-<p>公司有两套Spark环境，一套使用本地部署，一套使用Docker部署，在日常使用中，通常包含很多中文字段的日志打印。<br />
-在本地部署的环境中文日志显示正常，而一但通过Docker打包发布后，就出现中文乱码了。<br />
-在开启Spark History Server后，包含中文的Application更是直接报错，影响正常使用。 <span id="more"></span> 1. 使用Spark UI查看日志，发现中文全部乱码，变为<code>?</code>符号： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:14:35.849 CST main WARN org.apache.spark.sql.execution.datasources.jdbc.JdbcUtils: Create Table Sql: [CREATE TABLE snappy_2fb345e26060499e8ec47b4f9d96d1fe (`??` bigint , `??` integer , `????` datetime , `????` datetime )]</span><br></pre></td></tr></table></figure></p>
-<ol start="2" type="1">
-<li>开启Spark History Server后，只要ETL包含中文，解析就会报错： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:57:19.450 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095627-0016</span><br><span class="line">20/09/15 09:57:21.388 CST log-replay-executor-3 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095627-0016 for listing data...</span><br><span class="line">20/09/15 09:57:21.392 CST log-replay-executor-3 ERROR org.apache.spark.deploy.history.FsHistoryProvider: Exception while merging application listings</span><br><span class="line">java.nio.charset.MalformedInputException: Input length = 1</span><br><span class="line">    at java.nio.charset.CoderResult.throwException(CoderResult.java:281)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:339)</span><br><span class="line">    at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)</span><br><span class="line">    at java.io.InputStreamReader.read(InputStreamReader.java:184)</span><br><span class="line">    at java.io.BufferedReader.fill(BufferedReader.java:161)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:324)</span><br><span class="line">    at java.io.BufferedReader.readLine(BufferedReader.java:389)</span><br><span class="line">    at scala.io.BufferedSource$BufferedLineIterator.hasNext(BufferedSource.scala:74)</span><br><span class="line">    at scala.collection.Iterator$$anon$20.hasNext(Iterator.scala:884)</span><br><span class="line">    at scala.collection.Iterator$$anon$12.hasNext(Iterator.scala:511)</span><br><span class="line">    at org.apache.spark.scheduler.ReplayListenerBus.replay(ReplayListenerBus.scala:82)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4(FsHistoryProvider.scala:777)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$doMergeApplicationListing$4$adapted(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.util.Utils$.tryWithResource(Utils.scala:2539)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.doMergeApplicationListing(FsHistoryProvider.scala:759)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.mergeApplicationListing(FsHistoryProvider.scala:675)</span><br><span class="line">    at org.apache.spark.deploy.history.FsHistoryProvider.$anonfun$checkForLogs$13(FsHistoryProvider.scala:545)</span><br><span class="line">    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:748)</span><br></pre></td></tr></table></figure> 不包含中文则可以正常解析： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">20/09/15 09:58:33.352 CST worker-cleanup-thread INFO org.apache.spark.deploy.worker.Worker: Cleaning up local directories for application app-20200915095822-0017</span><br><span class="line">20/09/15 09:58:41.403 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017 for listing data...</span><br><span class="line">20/09/15 09:58:41.407 CST log-replay-executor-0 INFO org.apache.spark.deploy.history.FsHistoryProvider: Finished parsing file:/opt/tmp/spark-events/eventlog_v2_app-20200915095822-0017</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="排查过程">排查过程</h2>
-<ol type="1">
-<li><p>根据错误堆栈，找到读取日志文件的代码： <img data-src="https://img.hujinbo.me/blog/sCC78J.png" /></p></li>
-<li><p>查看<code>Source.fromInputStream</code>源码，可以看到默认使用<code>Codec.default</code>的编码： <img data-src="https://img.hujinbo.me/blog/JATmVQ.png" /></p></li>
-<li><p>查看<code>Codec.default</code>源码，可以看到默认使用的是<code>Charset.defaultCharset</code>的编码： <img data-src="https://img.hujinbo.me/blog/zL1c8w.png" /></p></li>
-<li><p>而<code>Charset.defaultCharset</code>读取的是<code>file.encoding</code>的值： <img data-src="https://img.hujinbo.me/blog/oXiqJh.png" /></p></li>
-<li><p>关闭Spark History Server日志压缩，下载日志文件，发现文件编码为<code>UTF-8</code>且中文写入正常，故日志写入方面没有问题： <img data-src="https://img.hujinbo.me/blog/rZjyfq.png" /></p></li>
-<li><p>通过Spark UI查看Spark系统环境变量，发现编码为<code>ANSI_X3.4-1968</code>，可能是使用该编码读取文件时引发报错: <img data-src="https://img.hujinbo.me/blog/344l9I.png" /></p></li>
-<li><p>为验证上述猜想，编写测试用例，使用<code>Source</code>读取日志文件，并指定编码为<code>ANSI_X3.4-1968</code>，可以复现Spark History Server的报错： <img data-src="https://img.hujinbo.me/blog/H4PEMv.png" /></p></li>
-<li><p>而指定编码为<code>UTF-8</code>时，文件读取正常。所以，只需让读取到的<code>file.encoding</code>为<code>UTF-8</code>即可解决乱码和报错的问题。 <img data-src="https://img.hujinbo.me/blog/Al1A1v.png" /></p></li>
-<li><p>而日志打印中文乱码问题，是因为磁盘只能存储二进制文件，故Java程序在写文件时会调用<code>String.getByte</code>方法将对象转为byte，然后再写入磁盘。 查看相关源码，发现它使用的编码也是上面提到的<code>Charset.defaultCharset</code>系统默认编码。 <img data-src="https://img.hujinbo.me/blog/xmTpZV.png" /></p></li>
-<li><p>所以上述2个问题，都是由于Docker环境下未指定系统默认字符集为<code>UTF-8</code>，导致读取<code>file.encoding</code>为<code>ANSI_X3.4-1968</code>所引发的。</p></li>
-</ol>
-<h2 id="注意事项">注意事项</h2>
-<p>在排查过程中，进入容器后，使用<code>locale</code>命令或启动<code>spark-shell</code>执行<code>println(Charset.defaultCharset)</code>检查编码均正常，故不能使用这2种方法判断。<br />
-除了上述Spark UI查看<code>file.encoding</code>的方式，也可以使用Arthas诊断工具的<code>sysprop</code>命令进行查看当前JVM的<code>file.encoding</code>属性。 <img data-src="https://img.hujinbo.me/blog/IHFjQC.png" /></p>
-]]></content>
-      <categories>
-        <category>Spark</category>
-      </categories>
-      <tags>
-        <tag>Spark</tag>
       </tags>
   </entry>
 </search>
