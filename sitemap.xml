@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>https://hujinbo.me/tags/SpringBoot/</loc>
-    <lastmod>2022-01-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hujinbo.me/tags/Markdown/</loc>
     <lastmod>2022-01-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -134,6 +127,13 @@
   
   <url>
     <loc>https://hujinbo.me/tags/Tag-Plugins/</loc>
+    <lastmod>2022-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hujinbo.me/tags/SpringBoot/</loc>
     <lastmod>2022-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -177,14 +177,14 @@
 
   
   <url>
-    <loc>https://hujinbo.me/categories/SpringBoot/</loc>
+    <loc>https://hujinbo.me/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2022-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hujinbo.me/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://hujinbo.me/categories/SpringBoot/</loc>
     <lastmod>2022-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

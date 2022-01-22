@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SpringBoot快速入门</title>
-    <url>/posts/2197/</url>
-    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
-<ol type="1">
-<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><span id="more"></span></p></li>
-<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
-<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
-<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
-<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
-<li><p>删除没用的文件</p>
-<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
-</ol>
-<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
-]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown常用语法介绍</title>
     <url>/posts/26028/</url>
     <content><![CDATA[<blockquote>
@@ -351,48 +324,30 @@ e=mc^2
       </tags>
   </entry>
   <entry>
-    <title>Docker Compose多容器部署</title>
-    <url>/posts/53410/</url>
-    <content><![CDATA[<blockquote>
-<p>Docker Compose是用于定义和运行多容器Docker应用程序的工具，可以通过YAML文件创建、管理多个容器。</p>
-</blockquote>
-<h2 id="安装">安装</h2>
+    <title>SpringBoot快速入门</title>
+    <url>/posts/2197/</url>
+    <content><![CDATA[<h2 id="新建项目">新建项目</h2>
 <ol type="1">
-<li><p>下载Docker Compose可执行文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
-<li><p>修改可执行权限 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
+<li><p>打开IDEA新建一个项目，选择Spring Initializr，保持默认选项，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624231319.png" /><span id="more"></span></p></li>
+<li><p>填写Maven GroupID、ArtifactID、Version等名称后，点击Next</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624232042.png" /></p></li>
+<li><p>勾选Spring Web Starter，并选择Spring Boot版本（<code>SNAPSHOT</code>是快照版本，建议选择<code>RELEASE</code>版本）</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233350.png" /></p></li>
+<li><p>填写项目名称和路径，路径最好不要包含中文名和空格，点击Finish后，在弹出的提示框中点击OK</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624233612.png" /></p></li>
+<li><p>此时项目已经新建完成，等待下载Maven依赖后运行项目即可</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190624234542.png" /></p></li>
+<li><p>删除没用的文件</p>
+<p><img data-src="https://img.hujinbo.me/blog/20190625000508.png" /></p></li>
 </ol>
-<span id="more"></span>
-<h2 id="语法介绍">语法介绍</h2>
-<p>一个Services代表一个container，可以从image创建，也可以通过build创建，可以指定volume和network。如下通过docker部署wordpress应用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create -d bridge my-net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -d --name wordpress --network my-net -p 8080:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_PASSWORD=root wordpress</span><br><span class="line">docker run -d --name mysql --network my-net -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress mysql:5.7</span><br></pre></td></tr></table></figure>
-<p>通过Docker Compose部署则只需编写如下文件，执行<code>docker-compose up</code>命令即可：</p>
-<figure class="highlight bash"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      WORDPRESS_DB_PASSWORD: root</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: wordpress</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql-data:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql-data:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  my-net:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure>
-<h2 id="常用命令">常用命令</h2>
-<h3 id="查看版本">查看版本</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose -v</span><br></pre></td></tr></table></figure>
-<h3 id="构建容器">构建容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
-<h3 id="启动服务">启动服务</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认使用当前目录下的docker-compose.yml</span></span><br><span class="line">docker-compose up</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在后台运行，不打印日志</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定文件启动</span></span><br><span class="line">docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
-<h3 id="查看镜像">查看镜像</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose images</span><br></pre></td></tr></table></figure>
-<h3 id="查看容器">查看容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
-<h3 id="进入容器">进入容器</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql bash</span><br></pre></td></tr></table></figure>
-<h3 id="停止服务">停止服务</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 停止但不删除容器</span></span><br><span class="line">docker-compose stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器并移除网络</span></span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
-<h3 id="水平扩展">水平扩展</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定服务运行的容器个数，格式：service=num</span></span><br><span class="line">docker-compose up -d --scale wordpress=3</span><br></pre></td></tr></table></figure>
-<div class="note warning">
-            <p>更多内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vY29tcG9zZS8=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
-          </div>
+<p><strong>注</strong>：以上是通过IDEA创建，也可以通过https://start.spring.io/生成项目后下载到本地。</p>
 ]]></content>
       <categories>
-        <category>Docker</category>
+        <category>SpringBoot</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
+        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -530,6 +485,51 @@ e=mc^2
 <li><p>定义<code>VOLUME</code>，由docker后台自动创建 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启动时挂载数据卷，-v 别名</span></span><br><span class="line">docker run -d -v mysql-data:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=<span class="literal">true</span> mysql:5.7</span><br><span class="line"><span class="comment"># 查看数据卷</span></span><br><span class="line">docker volume ls</span><br><span class="line"><span class="comment"># 查看挂载详细信息</span></span><br><span class="line">docker volume inspect mysql-data</span><br><span class="line"><span class="comment"># 删除数据卷</span></span><br><span class="line">docker volume rm mysql-data</span><br></pre></td></tr></table></figure></p></li>
 <li><p>挂载主机目录，不需要定义<code>VOLUME</code>，只需指定本地目录与容器目录的对应关系 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d -v /home/data/mysql:/var/lib/mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=<span class="literal">true</span> mysql:5.7</span><br></pre></td></tr></table></figure></p></li>
 </ol>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker Compose多容器部署</title>
+    <url>/posts/53410/</url>
+    <content><![CDATA[<blockquote>
+<p>Docker Compose是用于定义和运行多容器Docker应用程序的工具，可以通过YAML文件创建、管理多个容器。</p>
+</blockquote>
+<h2 id="安装">安装</h2>
+<ol type="1">
+<li><p>下载Docker Compose可执行文件 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改可执行权限 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<span id="more"></span>
+<h2 id="语法介绍">语法介绍</h2>
+<p>一个Services代表一个container，可以从image创建，也可以通过build创建，可以指定volume和network。如下通过docker部署wordpress应用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create -d bridge my-net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -d --name wordpress --network my-net -p 8080:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_PASSWORD=root wordpress</span><br><span class="line">docker run -d --name mysql --network my-net -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wordpress mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>通过Docker Compose部署则只需编写如下文件，执行<code>docker-compose up</code>命令即可：</p>
+<figure class="highlight bash"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">version: <span class="string">&#x27;3&#x27;</span></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: mysql</span><br><span class="line">      WORDPRESS_DB_PASSWORD: root</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">  mysql:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_ROOT_PASSWORD: root</span><br><span class="line">      MYSQL_DATABASE: wordpress</span><br><span class="line">    volumes:</span><br><span class="line">      - mysql-data:/var/lib/mysql</span><br><span class="line">    networks:</span><br><span class="line">      - my-net</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  mysql-data:</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  my-net:</span><br><span class="line">    driver: bridge</span><br></pre></td></tr></table></figure>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="查看版本">查看版本</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose -v</span><br></pre></td></tr></table></figure>
+<h3 id="构建容器">构建容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
+<h3 id="启动服务">启动服务</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 默认使用当前目录下的docker-compose.yml</span></span><br><span class="line">docker-compose up</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在后台运行，不打印日志</span></span><br><span class="line">docker-compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据指定文件启动</span></span><br><span class="line">docker-compose -f docker-compose.yml up</span><br></pre></td></tr></table></figure>
+<h3 id="查看镜像">查看镜像</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose images</span><br></pre></td></tr></table></figure>
+<h3 id="查看容器">查看容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
+<h3 id="进入容器">进入容器</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose <span class="built_in">exec</span> mysql bash</span><br></pre></td></tr></table></figure>
+<h3 id="停止服务">停止服务</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 停止但不删除容器</span></span><br><span class="line">docker-compose stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器并移除网络</span></span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure>
+<h3 id="水平扩展">水平扩展</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 指定服务运行的容器个数，格式：service=num</span></span><br><span class="line">docker-compose up -d --scale wordpress=3</span><br></pre></td></tr></table></figure>
+<div class="note warning">
+            <p>更多内容，请阅读<strong><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vY29tcG9zZS8=">官方文档<i class="fa fa-external-link-alt"></i></span></strong></p>
+          </div>
 ]]></content>
       <categories>
         <category>Docker</category>
