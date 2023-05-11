@@ -1,6 +1,6 @@
 {
   "name": "hujinbo.me",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "start": "hexo clean && hexo server",
@@ -11,33 +11,33 @@
     "build-prod": "hexo clean && hexo generate && gulp"
   },
   "hexo": {
-    "version": "6.0.0"
+    "version": "6.3.0"
   },
   "dependencies": {
-    "hexo": "^6.0.0",
+    "hexo": "^6.3.0",
     "hexo-abbrlink": "^2.2.1",
-    "hexo-deployer-git": "^3.0.0",
-    "hexo-generator-archive": "^1.0.0",
+    "hexo-deployer-git": "^4.0.0",
+    "hexo-generator-archive": "^2.0.0",
     "hexo-generator-baidu-sitemap": "^0.1.9",
-    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index": "^2.0.0",
-    "hexo-generator-searchdb": "^1.4.0",
-    "hexo-generator-sitemap": "^2.2.0",
-    "hexo-generator-tag": "^1.0.0",
+    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-searchdb": "^1.4.1",
+    "hexo-generator-sitemap": "^3.0.1",
+    "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-pandoc": "^0.3.0",
-    "hexo-renderer-stylus": "^2.0.1",
+    "hexo-renderer-pandoc": "^0.4.0",
+    "hexo-renderer-stylus": "^2.1.0",
     "hexo-server": "^3.0.0",
     "hexo-symbols-count-time": "^0.7.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.10",
-    "@babel/preset-env": "^7.16.11",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
-    "gulp-html-minifier-terser": "^6.0.1",
+    "gulp-html-minifier-terser": "^7.1.0",
     "gulp-uglify": "^3.0.2"
   }
 }
