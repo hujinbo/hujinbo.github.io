@@ -68,7 +68,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./deploy/kubernetes/Dockerfile
+          file: ./deploy/docker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
       - name: ServerChan

@@ -1,0 +1,11 @@
+version: '3'
+services:
+  blog:
+    image: hujinbo/blog
+    container_name: hujinbo-blog
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /home/data/blog/ssl:/etc/nginx/ssl
+      - /home/data/blog/log:/var/log/nginx/
