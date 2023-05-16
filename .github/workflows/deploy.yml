@@ -1,0 +1,98 @@
+name: Deploy
+ 
+on:
+  push:
+    branches:
+      - "hexo"
+
+jobs:
+  build-package:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout Blog Repository
+      uses: actions/checkout@v3
+      with:
+        ref: hexo
+        submodules: true
+    - name: Install Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14.21.3'
+        cache: 'yarn'
+    - name: Install pandoc
+      run: |
+        cd /tmp
+        wget -c https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-1-amd64.deb
+        sudo dpkg -i pandoc-2.16.2-1-amd64.deb
+    - name: Install Dependencies
+      run: yarn install --frozen-lockfile
+    - name: Build Package
+      run: yarn run build-prod
+    - name: Upload Package
+      uses: actions/upload-artifact@v3
+      with:
+        name: site
+        path: public
+    - name: Commit Abbrlink Changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: "Apply abbrlink changes"
+        file_pattern: "source/_posts/**"
+    - name: ServerChan
+      uses: easychen/github-action-server-chan@v1.0.0
+      with:
+        sendkey: ${{ secrets.SERVER_CHAN_KEY }}
+        title: "Blog编译成功！"
+          
+  build-images:
+    runs-on: ubuntu-latest
+    needs: build-package
+    steps:
+      - name: Checkout Blog Repository
+        uses: actions/checkout@v3
+      - name: Download Package
+        uses: actions/download-artifact@v3
+        with:
+          name: site
+          path: dist
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./deploy/kubernetes/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
+      - name: ServerChan
+        uses: easychen/github-action-server-chan@v1.0.0
+        with:
+          sendkey: ${{ secrets.SERVER_CHAN_KEY }}
+          title: "Blog镜像打包成功！"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-images
+    steps:
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      - name: Scan Public Keys
+        run: |
+          ssh-keyscan ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+      - name: Deploy to Server
+        run: |
+          ssh ${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }} 'sh /home/data/blog/deploy.sh'
+      - name: ServerChan
+        uses: easychen/github-action-server-chan@v1.0.0
+        with:
+          sendkey: ${{ secrets.SERVER_CHAN_KEY }}
+          title: "Blog部署成功！"
